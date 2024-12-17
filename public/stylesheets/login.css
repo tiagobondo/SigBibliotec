@@ -1,0 +1,189 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --cor01:#000;
+  --cor02:#fff;
+  --cor03:#00378c;
+  --cor4:#0075db;
+  --cor05:#00a3e7;
+  --cor06:#c68e15;
+  --cor07:#ca250f;
+  --cor08:#210d06;
+  --cor09:#f5f5f5;
+  --cor10:#f1f1f1;
+  --cor11:#0009;
+  --cor12:#4d4d4d;
+  --cor13:#0010;
+  --cor14:#333;
+  --cor15:#eeeeee;
+}
+
+@font-face {
+  font-family:"Belanosima" ;
+  src: url("/fonts/Belanosima-Regular.ttf");
+}
+
+@font-face {
+  font-family: "FiraCode";
+  src: url("/fonts/FiraCode-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: url("/fonts/Lobster-Regular.ttf");
+}
+
+@font-face {
+  font-family: "OpensSans";
+  src: url("/fonts/OpenSans-VariableFont_wdth\,wght.ttf");
+}
+
+@font-face {
+  font-family: "OutFit";
+  src: url("/fonts/Outfit-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("/fonts/Pacifico-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Strait";
+  src: url("/fonts/Strait-Regular.ttf");
+}
+
+body{
+
+}
+
+.container-login{
+  width: 100%;
+  height: 100vh;
+  background-color:var(--cor09);
+}
+
+.container-img{
+  background-image: url("../images/araix-rand-NTPCbeYPCS4-unsplash.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 100vh;
+  float: left;
+}
+
+.focus-img{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-focus-img{
+  color: var(--cor02);
+  font-family: Strait;
+  font-size: 3em;
+}
+
+/*Information of form login*/
+.form-login{
+  float: right;
+  width: 50%;
+  height: 100vh;
+  background-color: var(--cor09);
+  box-shadow: 0 0 10px var(--cor11);
+}
+/*Information of form login*/
+.title-form{
+  font-family: Strait;
+  padding: 5%;
+  text-align: center;
+  color: var(--cor14);
+  font-size: 2.2em;
+}
+/*Information of form login*/
+.container-input{
+  margin: auto;
+  width: 75%;
+  height: 100px;
+  margin-bottom: 5%;
+}
+
+/*Information of form login*/
+.label-input{
+  font-size: 1.1em;
+  font-family: FiraCode;
+  color: var(--cor12);
+}
+/*Information of form login*/
+i{
+  font-size: 1.5em;
+  padding-right: 10px;
+  color: var(--cor14);
+}
+
+/*Information of form login*/
+.input-form{
+  height: 40%;
+  width: 90%;
+  font-size: 1em;
+  text-indent: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: var(--cor15);
+  padding: 10px;
+  color: var(--cor11);
+}
+
+/*Information of form login*/
+
+.container-footer-form{
+  margin: auto;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/*Information of form login*/
+.btn-login{
+  padding: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+  width: 60%;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--cor14);
+  border-radius: 5px;
+  color: var(--cor02);
+  transition: .1s;
+}
+
+.btn-login:hover{
+  background-color: var(--cor13);
+  color: var(--cor14);
+  border: 1px solid var(--cor14);
+}
+
+.btn-login:active{
+  background-color: var(--cor14);
+  color: var(--cor02);
+}
+
+/*Information of form login*/
+.paragraphy{
+  text-align: center;
+  padding: 10px;
+  font-family: Strait;
+  color: var(--cor12);
+}

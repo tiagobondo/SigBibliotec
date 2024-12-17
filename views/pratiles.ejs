@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+  <%- include('partials/header.ejs')%>
+
+  <div class="container-head">
+    <h2 class="title-readrs">Pratileiras</h2> <button type="button" class="btn-vis">Ver Pratileiras</button>
+  </div>
+
+  <main class="container-cad">
+    <h2 class="title-container-cad">Cadastramento de Pratileiras</h2>
+
+    <form action="#" class="form-cad">
+      <div class="container-label">
+        <label for="" class="label-form">Pratileira</label>
+        <label for="" class="label-form">Capacidade</label>
+      </div>
+
+      <div class="container-inputs">
+        <input type="text" placeholder="Digite o nome da pratileira ex(Pratileira01)" class="input">
+        <input type="text" placeholder="Digite a capacidade de livros na pratilheira" class="input">
+      </div>
+
+      <button type="submit" class="btn-cad-form">Cadastrar</button>
+      <button type="reset" class="btn-reset-form">Limpar</button>
+    </form>
+  </main>
+
+  
+  
+</body>
+</html>

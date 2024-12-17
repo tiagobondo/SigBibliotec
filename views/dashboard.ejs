@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+<%- include('partials/header.ejs')%>
+
+<h2 class="title-dashboard">Estatísticas</h2>
+
+<main class="main-dashboard">
+
+  <article class="article">
+    <p class="paragraphy-article">
+    <i class="fa fa-users" id="icon-article"></i>
+
+    <p class="numbers">10</p>
+    <p class="name">Leitores</p>
+  </p>
+  </article>
+
+  <article class="article" id="article-book">
+    <p class="paragraphy-article">
+    <i class="fa fa-book" id="icon-article2"></i>
+
+    <p class="numbers">1000</p>
+    <p class="name">Livros</p>
+  </p>
+  </article>
+
+  <article class="article" id="article-table">
+    <p class="paragraphy-article">
+    <i class="fa fa-table" id="icon-article3"></i>
+
+    <p class="numbers">100000</p>
+    <p class="name">Mesas</p>
+  </p>
+  </article>
+
+  <article class="article" id="article-prati">
+    <p class="paragraphy-article">
+    <i class="fa fa-bar-chart" id="icon-article4"></i>
+
+    <p class="numbers">100</p>
+    <p class="name">Pratileiras</p>
+  </p>
+  </article>
+
+</main>
+
+
+<%- include('partials/footer.ejs')%>
+</body>
+</html>

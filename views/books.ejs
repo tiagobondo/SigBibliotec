@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+  <%- include('partials/header.ejs')%>
+
+  <div class="container-head">
+    <h2 class="title-readrs">Livros</h2> <button type="button" class="btn-vis">Ver Livros</button>
+  </div>
+
+  <main class="container-cad">
+    <h2 class="title-container-cad">Cadastramento de Livros</h2>
+
+    <form action="#" class="form-cad">
+
+      <div class="container-label">
+        <label for="" class="label-form">Livro</label>
+        <label for="" class="label-form">Categoria</label>
+        <label for="" class="label-form">Quantidade no Stock</label>
+      </div>
+
+      <div class="container-inputs">
+        <input type="text" placeholder="Digite seu o nome do Livro" class="input">
+        <select name="categoryBook" id=""  class="input">
+          <option value="1">Desporto</option>
+          <option value="2">Cultura</option>
+          <option value="3">Tecnologia</option>
+          <option value="4">Ciências</option>
+        </select>
+        <input type="number" placeholder="Digite o número de livros no Stock"  class="input">
+      </div>
+
+      <div class="container-label">
+        <label for="" class="label-form">Editora</label>
+        <label for="" class="label-form">Edição</label>
+        <label for="" class="label-form">Autor</label>
+      </div>
+
+      <div class="container-inputs">
+        <input type="text" placeholder="Digite a editora" class="input">
+        <input type="text" placeholder="Digite a edição" class="input">
+        <input type="text" placeholder="Digite nome do Autor ou Autores" class="input">
+      </div>
+
+      <div class="container-label">
+        <label for="" class="label-form">Fornecidor</label>
+      </div>
+
+      <div class="container-inputs">
+        <input type="text" placeholder="Digite o nome do fornecidor" class="input">
+      </div>
+
+      <button type="submit" class="btn-cad-form">Cadastrar</button>
+      <button type="reset" class="btn-reset-form">Limpar</button>
+
+    </form>
+  </main>
+  
+</body>
+</html>

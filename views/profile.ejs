@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+  <%- include('partials/header.ejs')%>
+
+  <main class="container-profile">
+    <h2 class="title-perfil">Perfil do Utilizador</h2>   
+   
+    <div class="container-img">
+      <img src="../images/310696705_463886302375941_3113370688478387154_n.jpg" alt="" class="img-profile">
+
+      <form action="">
+        <input type="file" class="input-file">
+
+        <button type="submit" class="btn-submit-photo">Carregar</button>
+      </form>
+    </div>
+
+    <div class="container-data">
+      <label for="" class="label-data">Nome Completo</label> <br>
+      <label for="" class="label-infor">Tiago Pedro Menenga Bondo</label> <br>
+
+      <label for="" class="label-data">Tipo de Documento</label> <br>
+      <label for="" class="label-infor">Bilhete de Identidade</label> <br>
+
+      <label for="" class="label-data">Número do documento</label> <br>
+      <label for="" class="label-infor">009880853UE048</label> <br>
+
+      <label for="" class="label-data">Nome de Usuário</label> <br>
+      <label for="" class="label-infor">tiagobondo</label> <br>
+
+      <label for="" class="label-data">Senha</label> <br>
+      <label for="" class="label-infor">XXXXXXXXXXXXXX</label> <br>
+
+      <label for="" class="label-data">Tipo de Conta</label> <br>
+      <label for="" class="label-infor">Administrador</label> <br>
+
+      <label for="" class="label-data">Data de Criação da conta</label> <br>
+      <label for="" class="label-infor">17/12/2024</label> <br>
+
+      <button type="button" class="btn-edit-profile">Editar informações</button>
+    </div>
+  </main>
+  
+</body>
+</html>

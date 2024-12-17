@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <link rel="stylesheet" href="/stylesheets/portrait.css" media="screen and (orientation:portrait)">
+</head>
+<body>
+  <%- include('partials/header.ejs')%>
+  
+  <div class="container-head">
+    <h2 class="title-readrs">Leitores</h2> <button type="button" class="btn-vis">Ver Leitores</button>
+  </div>
+
+  <main class="container-cad">
+    <h2 class="title-container-cad">Cadastramento de leitor</h2>
+
+    <form action="#" class="form-cad">
+      
+      <div class="container-label">
+        <label for="" class="label-form">Nome Completo</label>
+        <label for="" class="label-form">Documento de Identidade</label>
+        <label for="" class="label-form">Número do Documento</label>
+      </div>
+
+      <div class="container-inputs">
+        <input type="text" placeholder="Digite seu nome Completo" class="input">
+        <select name="docType" id=""  class="input">
+          <option value="1">Bilhete de Identidade</option>
+          <option value="2">Passaporte</option>
+          <option value="3">Cartão de Estudante</option>
+          <option value="4">Cedúla</option>
+        </select>
+        <input type="text" placeholder="Digite o número do documento"  class="input">
+      </div>
+
+      <div class="container-label">
+        <label for="" class="label-form">Data e Hora</label>
+        <label for="" class="label-form">Livro</label>
+        <label for="" class="label-form">Quantidade de Livros</label>
+      </div>
+
+      <div class="container-inputs">
+        <input type="text" class="input" readonly placeholder="D/M/A">
+        <select name="docType" id=""  class="input">
+          <option value="1">Análise Matemática I</option>
+          <option value="2">Análise Matemática II</option>
+          <option value="3">Psicologia Criminal</option>
+          <option value="4">Técnica de Linguagem de Programação</option>
+        </select>
+        <select name="docType" id=""  class="input">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+
+      <div class="container-label">
+        <label for="" class="label-form">Categoria do Livro</label>
+        <label for="" class="label-form">Assunto</label>
+        <label for="" class="label-form">Duração</label>
+      </div>
+
+      <div class="container-inputs">
+        <select name="docType" id=""  class="input">
+          <option value="1">Desporto</option>
+          <option value="2">Cultura</option>
+          <option value="3">Tecnologia</option>
+          <option value="4">Ciências</option>
+        </select>
+        <select name="docType" id=""  class="input">
+          <option value="1">Leitura e Investigação</option>
+          <option value="2">Devolução</option>
+          <option value="3">Emprestimo</option>
+        </select>
+        <select name="docType" id=""  class="input">
+          <option value="1">30min</option>
+          <option value="2">1H</option>
+          <option value="3">2H</option>
+          <option value="3">Indefinido</option>
+        </select>
+      </div>
+
+
+        <button type="submit" class="btn-cad-form">Cadastrar</button>
+        <button type="reset" class="btn-reset-form">Limpar</button>
+
+    </form>
+
+  </main>
+</body>
+</html>
