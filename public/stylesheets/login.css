@@ -131,7 +131,7 @@ i{
 /*Information of form login*/
 .input-form{
   height: 40%;
-  width: 90%;
+  width: 80%;
   font-size: 1em;
   text-indent: 10px;
   border-radius: 5px;
@@ -142,16 +142,29 @@ i{
   color: var(--cor11);
 }
 
+.btn-eye{
+  border: none;
+  outline: none;
+  background-color: var(--cor13);
+  color: var(--cor14);
+  font-weight: bold;
+  cursor: pointer;
+  transition: .1s;
+}
+
+.btn-eye:active > i{
+  color: var(--cor12);
+}
+
 /*Information of form login*/
 
 .container-footer-form{
   margin: auto;
-  width: 100%;
+  width: 90%;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 /*Information of form login*/
