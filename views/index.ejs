@@ -15,17 +15,17 @@
         </div>
       </div>
 
-      <form action="#" class="form-login" method="get">
+      <form class="form-login" method="post">
         <h1 class="title-form">Seja Bem-Vindo</h1>
 
         <div class="container-input">
           <label for="userName" class="label-input">Nome de usuário</label> <br> <br>
-          <i class="fa fa-user"></i><input type="text" placeholder="Digite seu nome de usário" class="input-form" id="input-userName" required>
+          <i class="fa fa-user"></i><input type="text" placeholder="Digite seu nome de usário" class="input-form" id="input-userName" name="userName" autocomplete="off" required>
         </div>
 
         <div class="container-input">
           <label for="inputPassword" class="label-input">Senha</label> <br><br>
-          <i class="fa fa-lock"></i><input type="password" placeholder="Digite sua senha" class="input-form" id="inputPassword" required>
+          <i class="fa fa-lock"></i><input type="password" placeholder="Digite sua senha" class="input-form" id="inputPassword" name="password" required>
          <button type="button" class="btn-eye" id="btnEye"> <i class="fa fa-eye"></i></button>
         </div>
 

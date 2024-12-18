@@ -143,6 +143,20 @@
   color: var(--cor02);
 }
 
+  #btn-logout{
+    background-color: red;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background-color: var(--cor13);
+    border: none;
+    outline: none;
+  }
+
+  #btn-logout:hover{
+    background-color: var(--cor12);
+  }
+
 /*Footer*/
 .footer{
   width: 100%;

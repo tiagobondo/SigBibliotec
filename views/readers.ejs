@@ -17,7 +17,7 @@
   <main class="container-cad">
     <h2 class="title-container-cad">Cadastramento de leitor</h2>
 
-    <form action="#" class="form-cad">
+    <form class="form-cad" method="post">
       
       <div class="container-label">
         <label for="" class="label-form">Nome Completo</label>
@@ -26,14 +26,14 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" placeholder="Digite seu nome Completo" class="input">
+        <input type="text" placeholder="Digite seu nome Completo" class="input" name="fullName">
         <select name="docType" id=""  class="input">
           <option value="1">Bilhete de Identidade</option>
           <option value="2">Passaporte</option>
           <option value="3">Cartão de Estudante</option>
           <option value="4">Cedúla</option>
         </select>
-        <input type="text" placeholder="Digite o número do documento"  class="input">
+        <input type="text" placeholder="Digite o número do documento"  class="input" name="docNumber">
       </div>
 
       <div class="container-label">
@@ -43,7 +43,7 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" class="input" readonly placeholder="D/M/A" id="inputDate">
+        <input type="text" class="input" readonly placeholder="D/M/A" id="inputDate" name="date">
         <select name="livro" id=""  class="input">
           <option value="1">Análise Matemática I</option>
           <option value="2">Análise Matemática II</option>
@@ -77,8 +77,8 @@
         </select>
         <select name="duracao" id=""  class="input">
           <option value="1">30min</option>
-          <option value="2">1H</option>
-          <option value="3">2H</option>
+          <option value="2">1h</option>
+          <option value="3">2h</option>
           <option value="3">Indefinido</option>
         </select>
       </div>

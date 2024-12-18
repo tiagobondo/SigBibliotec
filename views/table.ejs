@@ -16,7 +16,7 @@
   <main class="container-cad">
     <h2 class="title-container-cad">Cadastramento de Mesas</h2>
 
-    <form action="#" class="form-cad">
+    <form class="form-cad" method="post">
       <div class="container-label">
         <label for="" class="label-form">Mesa</label>
         <label for="" class="label-form">Capacidade</label>
@@ -24,9 +24,9 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" placeholder="Digite o nome da mesa ex(Mesa01)" class="input">
-        <input type="text" placeholder="Digite a capacidade de alunos na mesa" class="input">
-        <input type="text" placeholder="Digite nºs de cadeiras nesta mesa" class="input">
+        <input type="text" placeholder="Digite o nome da mesa ex(Mesa01)" class="input" name="table">
+        <input type="text" placeholder="Digite a capacidade de alunos na mesa" class="input" name="people">
+        <input type="text" placeholder="Digite nºs de cadeiras nesta mesa" class="input" name="chairs">
       </div>
 
       <button type="submit" class="btn-cad-form">Cadastrar</button>

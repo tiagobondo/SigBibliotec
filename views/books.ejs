@@ -16,7 +16,7 @@
   <main class="container-cad">
     <h2 class="title-container-cad">Cadastramento de Livros</h2>
 
-    <form action="#" class="form-cad">
+    <form class="form-cad" method="post">
 
       <div class="container-label">
         <label for="" class="label-form">Livro</label>
@@ -25,14 +25,14 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" placeholder="Digite seu o nome do Livro" class="input">
+        <input type="text" placeholder="Digite seu o nome do Livro" class="input" name="book">
         <select name="categoryBook" id=""  class="input">
           <option value="1">Desporto</option>
           <option value="2">Cultura</option>
           <option value="3">Tecnologia</option>
           <option value="4">Ciências</option>
         </select>
-        <input type="number" placeholder="Digite o número de livros no Stock"  class="input">
+        <input type="number" placeholder="Digite o número de livros no Stock"  class="input" name="numberBooks">
       </div>
 
       <div class="container-label">
@@ -42,9 +42,9 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" placeholder="Digite a editora" class="input">
-        <input type="text" placeholder="Digite a edição" class="input">
-        <input type="text" placeholder="Digite nome do Autor ou Autores" class="input">
+        <input type="text" placeholder="Digite a editora" class="input" name="editor">
+        <input type="text" placeholder="Digite a edição" class="input" name="edition">
+        <input type="text" placeholder="Digite nome do Autor ou Autores" class="input" name="author">
       </div>
 
       <div class="container-label">
@@ -52,7 +52,7 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" placeholder="Digite o nome do fornecidor" class="input">
+        <input type="text" placeholder="Digite o nome do fornecidor" class="input" name="provider">
       </div>
 
       <button type="submit" class="btn-cad-form">Cadastrar</button>
