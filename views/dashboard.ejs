@@ -9,7 +9,11 @@
 <body>
 <%- include('partials/header.ejs')%>
 
-<h2 class="title-dashboard">Estatísticas</h2>
+<div class="container-dashboard-time">
+  <h2 class="title-dashboard">Estatísticas</h2> 
+  <i class="fa fa-calendar" id="icon-container-dashboard-time"></i>
+  <label for="" class="time" id="dateLabel"></label>
+</div>
 
 <main class="main-dashboard">
 
@@ -48,10 +52,8 @@
     <p class="name">Pratileiras</p>
   </p>
   </article>
-
 </main>
 
-
-<%- include('partials/footer.ejs')%>
+  <script src="/javascripts/custom.js"></script>
 </body>
 </html>

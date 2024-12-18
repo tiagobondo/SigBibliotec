@@ -1,11 +1,16 @@
-setInterval(()=>{
+//Pegando o input
+const inputDate = document.querySelector('#inputDate');
+//Pegando o label Time apartir do arquivo Dashboard
+const labelDate = document.querySelector('#dateLabel');
 //Buscando data e houra
 var date = new Date();
 var dateNow = date.toDateString();
-var onlyHour = date.toLocaleTimeString();
-//Pegando o input
-const inputDate = document.querySelector('#inputDate');
+const onlyHour = date.toLocaleTimeString();
+setInterval(()=>{
 //Atribuindo a data no input
 inputDate.value = dateNow;
 inputDate.value += onlyHour;
-},1)
+//
+},100)
+  //Atribuindo a data
+  labelDate.innerHTML = date;

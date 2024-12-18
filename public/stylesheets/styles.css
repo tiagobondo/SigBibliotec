@@ -69,6 +69,22 @@ body{
   color: var(--cor07);
 }
 
+.container-dashboard-time{
+  display: flex;
+  align-items: center;
+}
+
+#icon-container-dashboard-time{
+  font-size: 1.5em;
+  color: var(--cor07);
+}
+
+.time{
+  padding: 10px;
+  font-family: Strait;
+  color: var(--cor08);
+}
+
 .main-dashboard{
   width: 100%;
   display: flex;
@@ -89,8 +105,8 @@ body{
 }
 
 .article:hover{
- width: 260px;
- height: 180px;
+ width: 250px;
+ height: 170px;
 }
 
 #article-book{
@@ -380,3 +396,38 @@ body{
   color: var(--cor02);
 }
 
+/*Users ejs*/
+
+.title-users{
+  font-family: Strait;
+  padding: 20px;
+  text-align: center;
+  color: var(--cor4);
+}
+
+/* About ejs */
+
+.title-about{
+  font-family: Strait;
+  padding: 20px;
+  text-align: center;
+  color: var(--cor4);
+}
+
+.container-about{
+  margin: auto;
+  width: 60%;
+}
+
+#sub-title{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: FiraCode;
+  font-weight: bold;
+  color: var(--cor12);
+}
+
+.paragraphy-about{
+  text-align: justify;
+  font-family: OpensSans;
+}

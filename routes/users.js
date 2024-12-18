@@ -30,4 +30,12 @@ router.get('/profile', (req,res)=>{
   res.render('profile', {title: "Perfil"})
 })
 
+router.get('/users-systems', (req,res)=>{
+  res.render('users', {title: "Utilizadores"})
+})
+
+router.get('/about', (req,res)=>{
+  res.render('about', {title: "Sobre"})
+})
+
 module.exports = router;
