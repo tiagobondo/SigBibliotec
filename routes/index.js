@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+//import models
+const readersModel = require('../app/models/readers');
+
+//import config/dataBase
+const dataBase = require('../app/config/database');
+//Connected with database 
+
 /* GET home page. */
 router.get('/', (req,res)=>{
   res.render('index', {title:"Login"})
@@ -9,15 +16,42 @@ router.post('/', (req, res)=>{
   const { userName, password } = req.body;
 })
 
-router.get('/dashboard', (req,res)=>{
-  res.render('dashboard', {title: "Estatísticas"})
+router.get('/dashboard', async(req,res)=>{
+  const counterReaders = await readersModel.find().countDocuments();
+  res.render('dashboard', {title: "Estatísticas", nReaders:counterReaders})
 })
 
 router.get('/readers', (req,res)=>{
   res.render('readers', {title: "Leitores"})
 })
-router.post('/readers', (req,res)=>{
-  const { fullName, docType, docNumber, date, livro, quantidadeLivro, categoriaLivro, assunto, duracao } = req.body;
+router.post('/readers', async (req,res)=>{
+  const { fullName, docType, docNumber, dateRegister, livro, quantidadeLivro, categoriaLivro, assunto, duracao } = req.body;
+
+  try {
+    const data = new readersModel({
+      fullName,
+      docType,
+      docNumber,
+      dateRegister,
+      livro,
+      quantidadeLivro,
+      categoriaLivro,
+      assunto,
+      duracao
+    });
+    const response = await data.save();//Save data in DB
+
+    if(response){
+      res.send(`
+        <script>
+        alert("Cadastrado com sucesso!");
+        window.location.href='/readers';
+        </script>  
+      `)
+    }
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 router.get('/books', (req,res)=>{

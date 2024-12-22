@@ -6,11 +6,9 @@ const labelDate = document.querySelector('#dateLabel');
 var date = new Date();
 var dateNow = date.toDateString();
 const onlyHour = date.toLocaleTimeString();
-setInterval(()=>{
 //Atribuindo a data no input
 inputDate.value = dateNow;
 inputDate.value += onlyHour;
 //
-},100)
   //Atribuindo a data
   labelDate.innerHTML = date;

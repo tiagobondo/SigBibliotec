@@ -9,6 +9,8 @@
 </head>
 <body>
   <%- include('partials/header.ejs')%>
+
+ 
   
   <div class="container-head">
     <h2 class="title-readrs">Leitores</h2> <button type="button" class="btn-vis">Ver Leitores</button>
@@ -28,10 +30,10 @@
       <div class="container-inputs">
         <input type="text" placeholder="Digite seu nome Completo" class="input" name="fullName">
         <select name="docType" id=""  class="input">
-          <option value="1">Bilhete de Identidade</option>
-          <option value="2">Passaporte</option>
-          <option value="3">Cartão de Estudante</option>
-          <option value="4">Cedúla</option>
+          <option value="Bilhete de Identidade">Bilhete de Identidade</option>
+          <option value="Passaporte">Passaporte</option>
+          <option value="Cartão de Estudante">Cartão de Estudante</option>
+          <option value="Cedúla">Cedúla</option>
         </select>
         <input type="text" placeholder="Digite o número do documento"  class="input" name="docNumber">
       </div>
@@ -43,12 +45,12 @@
       </div>
 
       <div class="container-inputs">
-        <input type="text" class="input" readonly placeholder="D/M/A" id="inputDate" name="date">
+        <input type="text" class="input" readonly placeholder="D/M/A" id="inputDate" name="dateRegister">
         <select name="livro" id=""  class="input">
-          <option value="1">Análise Matemática I</option>
-          <option value="2">Análise Matemática II</option>
-          <option value="3">Psicologia Criminal</option>
-          <option value="4">Técnica de Linguagem de Programação</option>
+          <option value="Análise Matemática I">Análise Matemática I</option>
+          <option value="Análise Matemática II">Análise Matemática II</option>
+          <option value="Psicologia Criminal">Psicologia Criminal</option>
+          <option value="Técnica de Linguagem de Programação">Técnica de Linguagem de Programação</option>
         </select>
         <select name="quantidadeLivro" id=""  class="input">
           <option value="1">1</option>
@@ -65,21 +67,21 @@
 
       <div class="container-inputs">
         <select name="categoriaLivro" id=""  class="input">
-          <option value="1">Desporto</option>
-          <option value="2">Cultura</option>
-          <option value="3">Tecnologia</option>
-          <option value="4">Ciências</option>
+          <option value="Desporto">Desporto</option>
+          <option value="Cultura">Cultura</option>
+          <option value="Tecnologia">Tecnologia</option>
+          <option value="Ciências">Ciências</option>
         </select>
         <select name="assunto" id=""  class="input">
-          <option value="1">Leitura e Investigação</option>
-          <option value="2">Devolução</option>
-          <option value="3">Emprestimo</option>
+          <option value="Leitura e Investigação">Leitura e Investigação</option>
+          <option value="Devolução">Devolução</option>
+          <option value="Emprestimo">Emprestimo</option>
         </select>
         <select name="duracao" id=""  class="input">
-          <option value="1">30min</option>
-          <option value="2">1h</option>
-          <option value="3">2h</option>
-          <option value="3">Indefinido</option>
+          <option value="30min">30min</option>
+          <option value="1h">1h</option>
+          <option value="2h">2h</option>
+          <option value="Indefinido">Indefinido</option>
         </select>
       </div>
 
