@@ -431,3 +431,50 @@ body{
   text-align: justify;
   font-family: OpensSans;
 }
+
+/*Configurations*/
+
+#container-configurations{
+  margin: auto;
+  width: 50%;
+}
+
+.container-forms{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6%;
+}
+
+.container-forms > form > button {
+  width: 120px;
+}
+
+#btn-config{
+  width: 120px;
+}
+
+.btn-cad-form-reset{
+  margin-left: 1%;
+  padding: 15px;
+  outline: none;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: var(--cor06);
+  color: var(--cor02);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: .1s;
+}
+
+.btn-cad-form-reset:hover{
+  background-color: var(--cor13);
+  border: 1px solid var(--cor06);
+  font-weight: bold;
+  color: var(--cor06);
+}
+
+.btn-cad-form-reset:active{
+  background-color: var(--cor06);
+  color: var(--cor02);
+}

@@ -27,10 +27,9 @@
       <div class="container-inputs">
         <input type="text" placeholder="Digite seu o nome do Livro" class="input" name="book">
         <select name="categoryBook" id=""  class="input">
-          <option value="1">Desporto</option>
-          <option value="2">Cultura</option>
-          <option value="3">Tecnologia</option>
-          <option value="4">Ciências</option>
+          <% for( categoryBook of categoryBooks ) {%>
+          <option value="<%= categoryBook.categoryBook %>"><%= categoryBook.categoryBook %></option>
+          <%}%>
         </select>
         <input type="number" placeholder="Digite o número de livros no Stock"  class="input" name="numberBooks">
       </div>

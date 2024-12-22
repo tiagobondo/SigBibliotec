@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+  <%- include('partials/header')%>
+
+  <h2 class="title-container-cad">Configurações Gerais</h2>
+  <main class="container-cad" id="container-configurations">
+
+    <div class="container-forms">
+      <form action="/configurations/categoryBook" method="post">
+        <label for="" class="label-form">Categoria do Livro</label> <br>
+        <input type="text" placeholder="Configure a categoria do Livro" class="input" name="categoryBook" autocomplete="off" required> <br>
+        <button type="submit" class="btn-cad-form">Configurar</button>
+        <button type="reset" class="btn-cad-form-reset">Limpar</button>
+      </form>
+
+      <form action="/configurations/summary" method="post">
+        <label for="" class="label-form">Assunto</label> <br>
+        <input type="text" placeholder="Configure o assunto" class="input" name="summary" autocomplete="off" required> <br>
+        <button type="submit" class="btn-cad-form">Configurar</button>
+        <button type="reset" class="btn-cad-form-reset">Limpar</button>
+      </form>
+    </div>
+
+    <div class="container-forms">
+      <form action="/configurations/docType" method="post">
+        <label for="" class="label-form">Documento de Identidade</label> <br>
+        <input type="text" placeholder="Configure o tipo de documento aceite" class="input" name="docType" autocomplete="off" required> <br>
+        <button type="submit" class="btn-cad-form">Configurar</button>
+        <button type="reset" class="btn-cad-form-reset">Limpar</button>
+      </form>
+
+      <form action="/configurations/duration" method="post">
+        <label for="" class="label-form">Duração</label><br>
+        <input type="text" placeholder="Configure a duração" class="input" name="duration" autocomplete="off" required> <br>
+        <button type="submit" class="btn-cad-form">Configurar</button>
+        <button type="reset" class="btn-cad-form-reset">Limpar</button>
+      </form>
+    </div>
+
+
+  </main>
+  
+</body>
+</html>
