@@ -1,8 +1,11 @@
+@charset "utf-8";/*Reconhecimento de carácteres especias*/
+
+/*Atribuindo margin 0 e padding 0 para tudo*/
 *{
   margin: 0;
   padding: 0;
 }
-
+/*Criando variáveis para as minhas cores*/
 :root{
   --cor01:#000;
   --cor02:#fff;
@@ -20,8 +23,13 @@
   --cor14:#00a652;
   --cor15:#0075db4b;
   --cor16:#333;
+  --cor17: #808080;
+  --cor18: #80808031;
+  --cor19:#0075db93;
+  --cor20:#c68e15a1;
+  --cor21:#ca250f8a;
 }
-
+/*Importação das fontes*/
 @font-face {
   font-family:"Belanosima" ;
   src: url("/fonts/Belanosima-Regular.ttf");
@@ -56,41 +64,42 @@
   font-family: "Strait";
   src: url("/fonts/Strait-Regular.ttf");
 }
-
+/*Alterando a cor do corpo da página*/
 body{
   background-color: var(--cor09);
 }
 
 /* Dashboard */
 
+/*Título da página Dashboard*/
 .title-dashboard{
   padding: 20px;
   font-family: Strait;
   color: var(--cor07);
 }
-
+/*Container da Dashboard onde tem a hora*/
 .container-dashboard-time{
   display: flex;
   align-items: center;
 }
-
+/*Icon de Hora na Dashboard*/
 #icon-container-dashboard-time{
   font-size: 1.5em;
   color: var(--cor07);
 }
-
+/*A Data e Hora*/
 .time{
   padding: 10px;
   font-family: Strait;
   color: var(--cor08);
 }
-
+/*Corpo principal da Dashboard*/
 .main-dashboard{
   width: 100%;
   display: flex;
   justify-content: center;
 }
-
+/*Artigo da Dashboard com inforações das estatísticas*/
 .article{
   width: 220px;
   height: 150px;
@@ -103,58 +112,58 @@ body{
   cursor: pointer;
   transition: .1s;
 }
-
+/*Acção para quando passar o mouse sobre o artigo*/
 .article:hover{
  width: 250px;
  height: 170px;
 }
-
+/*Estilização pelo id de cada artigo*/
 #article-book{
   border-right: 10px solid var(--cor06);
 }
-
+/*Estilização pelo id de cada artigo*/
 #article-table{
   border-right: 10px solid var(--cor07);
 }
-
+/*Estilização pelo id de cada artigo*/
 #article-prati{
   border-right: 10px solid var(--cor4);
 }
-
+/*Transição para quando passar o mouse sobre o artigo*/
 .article:hover{
   transition: 1s;
 }
-
+/*Parágrafo dentro do artigo*/
 .paragraphy-article{
   text-align: center;
 }
-
+/*Icon dentro do artigo*/
 #icon-article{
   font-size: 4em;
   color: var(--cor14);
 }
-
+/*Icon dentro do artigo*/
 #icon-article2{
   font-size: 4em;
   color: var(--cor06);
 }
-
+/*Icon dentro do artigo*/
 #icon-article3{
   font-size: 4em;
   color: var(--cor07);
 }
-
+/*Icon dentro do artigo*/
 #icon-article4{
   font-size: 4em;
   color: var(--cor4);
 }
-
+/*Números dentro dos artigos*/
 .numbers{
   text-align: center;
   font-size: 2em;
   font-family: Pacifico;
 }
-
+/*Identificador dos artigos*/
 .name{
   text-align: center;
   font-family: Strait;
@@ -162,6 +171,7 @@ body{
 }
 
 /*Readers*/
+
 
 .title-readrs{
   font-family: Strait;
@@ -198,12 +208,13 @@ body{
 
 .container-cad{
   width: 100%;
+  padding-top: 2%;
 }
 
 .title-container-cad{
   font-family: Strait;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   color: var(--cor4);
 }
 
@@ -213,20 +224,13 @@ body{
   margin-top: 1%;
 }
 
-.container-label{
-  display: flex;
-  justify-content: space-between;
-  margin-right: 8%;
-  padding: 10px;
-}
-
 .container-inputs{
   display: flex;
   justify-content: space-between;
 }
 
 .input{
-  width: 300px;
+  width: 350px;
   padding: 12px;
   border: none;
   font-size: 1em;
@@ -234,13 +238,14 @@ body{
   outline: none;
   border-bottom: 1px solid var(--cor11);
   color: var(--cor12);
+  margin-bottom: 5%;
+  margin-top: 3%;
 }
 
 .label-form{
   font-size: 1.1em;
   font-family: FiraCode;
   color: var(--cor12);
-  margin: 2px;
   font-weight: bold;
 }
 
@@ -257,6 +262,7 @@ body{
   margin-top: 2%;
   border-radius: 5px;
   transition: .1s;
+  margin-left: 10%;
 }
 
 .btn-cad-form:hover{
@@ -269,6 +275,11 @@ body{
 .btn-cad-form:active{
   background-color: var(--cor14);
   color: var(--cor02);
+}
+
+#btn-cad-form-modal-update{
+  margin-left: 0%;
+  width: 100px;
 }
 
 .btn-reset-form{
@@ -477,4 +488,259 @@ body{
 .btn-cad-form-reset:active{
   background-color: var(--cor06);
   color: var(--cor02);
+}
+
+/*Modals*/
+
+.modal{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.abrir {
+  display: flex;
+}
+
+.modal-vis{
+  width: 100%;
+  height: 100vh;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-vis.openModalVis{
+  display: flex;
+}
+
+.modal-update{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-update.openModalUpdate{
+  display: flex;
+}
+
+.paragraphy-modal-update{
+  text-align: center;
+  font-family: OutFit;
+  font-weight: normal;
+  color: var(--cor17);
+  padding: 10px;
+}
+
+.container-modal{
+  width: 500px;
+  height: 100%;
+  background-color: var(--cor02);
+}
+
+.container-modal-vis{
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 600px;
+  height: 440px;
+  background-color: var(--cor02);
+}
+
+.container-modal-update{
+  width: 500px;
+  height: 280px ;
+  background-color: var(--cor02);
+}
+
+.title-modal-vis{
+  text-align: center;
+  font-family: Strait;
+  padding: 15px;
+  color: var(--cor4);
+}
+
+#label-modal-vis{
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.label-infor-modal-vis{
+  font-size: 1em;
+  font-family: OutFit;
+}
+
+.btn-close-modal-vis{
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--cor02);
+  background-color: var(--cor07);
+  transition: .1s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-close-modal-vis:hover{
+  background-color: var(--cor13);
+  border: 1px solid var(--cor07);
+  color: var(--cor07);
+}
+
+.btn-close-modal-vis:active{
+  background-color: var(--cor07);
+  color: var(--cor02);
+}
+
+.main-modal{
+  margin: auto;
+  width: 100%;
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.main-modal-update{
+  margin: auto;
+  width: 100%;
+  height: 80%;
+}
+
+.modal-footer{
+  height: 65px;
+  box-shadow: 0 0 10px var(--cor09);
+}
+
+.btn-close{
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  float: right;
+  margin-right: 2%;
+  margin-top: 2%;
+  cursor: pointer;
+  background-color: var(--cor07);
+  font-weight: bold;
+  color: var(--cor02);
+  font-size: 1em;
+  transition: .1s;
+}
+
+.btn-cancel-form-modal-update{
+  background-color: var(--cor07);
+  outline: none;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--cor02);
+  padding: 15px;
+  border-radius: 5px;
+  width: 100px;
+  transition: .1s;
+  cursor: pointer;
+}
+
+.btn-cancel-form-modal-update:hover{
+  background-color: var(--cor13);
+  color: var(--cor07);
+  border: 1px solid var(--cor07);
+}
+
+.btn-cancel-form-modal-update:active{
+  background-color: var(--cor07);
+  color: var(--cor02);
+}
+
+.btn-close:hover{
+  color: var(--cor12);
+}
+
+.btn-close:active{
+  color: var(--cor02);
+}
+
+/*Table*/
+
+.table{
+  border: 1px solid var(--cor18);
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 2%;
+  box-shadow: 0 0 10px var(--cor11);
+}
+
+.th{
+  background-color: var(--cor17);
+  color: var(--cor02);
+  padding: 15px;
+  font-size: 1em;
+  font-family: OutFit;
+  font-weight: normal;
+}
+
+.td{
+  padding: 10px;
+  border: 2px solid var(--cor18);
+  font-size: 1em;
+  font-family: OutFit;
+}
+
+#td-actions{
+  display: flex;
+}
+
+#icon-table{
+  font-size: 1.2em;
+}
+
+.btn-table{
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: var(--cor13);
+  transition: .1s;
+}
+
+#btn-see{
+  color: var(--cor4);
+}
+
+#btn-see:hover{
+  color: var(--cor19);
+}
+
+#btn-edit{
+  color: var(--cor06);
+}
+
+#btn-edit:hover{
+  color: var(--cor20);
+}
+
+
+#btn-delete{
+  color: var(--cor07);
+}
+
+#btn-delete:hover{
+  color: var(--cor21);
 }

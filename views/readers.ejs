@@ -7,90 +7,208 @@
   <link rel="stylesheet" href="/stylesheets/styles.css">
   <link rel="stylesheet" href="/stylesheets/portrait.css" media="screen and (orientation:portrait)">
 </head>
-<body>
+<body id="reload">
   <%- include('partials/header.ejs')%>
-
- 
-  
+  <!--Conteudo no Topo-->
   <div class="container-head">
-    <h2 class="title-readrs">Leitores</h2> <button type="button" class="btn-vis">Ver Leitores</button>
+    <h2 class="title-readrs">Leitores</h2> <button type="button" class="btn-vis" id="btnViewModal">Novo</button>
   </div>
-
+  <!--Corpo completo-->
   <main class="container-cad">
-    <h2 class="title-container-cad">Cadastramento de leitor</h2>
+    <table class="table">
+      <thead>
+        <tr>
+        <th class="th">Nome completo</th>
+        <th class="th">Documento</th>
+        <th class="th">NºDocumento</th>
+        <th class="th">Data e Hora</th>
+        <th class="th">Livro</th>
+        <th class="th">Ações</th>
+        </tr>
+      </thead>
+    
+    <tbody>
+    <% for( reader of readers ) {%>
+      <tr>
+        <td class="td"><%= reader.fullName %></td>
+        <td class="td"><%= reader.docType %></td>
+        <td class="td"><%= reader.docNumber %></td>
+        <td class="td"><%= reader.dateRegister %></td>
+        <td class="td"><%= reader.livro %></td>
+        <td class="td" id="td-actions">
+          <button type="button" class="btn-table" id="btn-see" 
+          onclick="visData(data={
+            fullName: '<%= reader.fullName %>',
+            docType: '<%= reader.docType %>',
+            docNumber:'<%= reader.docNumber %>',
+            dateRegister:'<%= reader.dateRegister %>',
+            livro:'<%= reader.livro %>',
+            quantidadeLivro:'<%= reader.quantidadeLivro %>',
+            categoriaLivro: '<%= reader.categoriaLivro %>',
+            assunto:'<%= reader.assunto %>',
+            duracao: '<%= reader.duracao %>'
+          })">
+          <i class="fa fa-eye" id="icon-table"></i></button>
 
-    <form class="form-cad" method="post">
+          <button type="button" class="btn-table" id="btn-edit"
+          onclick="editData(data={
+            id: '<%= reader._id %>',
+            fullName: '<%= reader.fullName %>'
+          })"
+          >
+          <i class="fa fa-edit" id="icon-table"></i></button>
+
+          <form action="/readers/delete/<%= reader.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+        </td>
+      </tr>
+      <%}%>
+ 
+    </tbody>
+    </table>
+    
+    <div class="tfooter">
+        
+    </div>
+  </main>
+
+  <!---Modal para fazer Cadastramento de novo leitor -->
+  <div class="modal" id="modal">
+    <div class="container-modal">
+      <button type="button" id="fechar" class="btn-close">X</button>
+
+      <h2 class="title-container-cad">Cadastramento de leitor</h2>
+
+      <div class="main-modal">
+
+      <form class="form-cad" method="post">
       
-      <div class="container-label">
-        <label for="" class="label-form">Nome Completo</label>
-        <label for="" class="label-form">Documento de Identidade</label>
-        <label for="" class="label-form">Número do Documento</label>
-      </div>
+        <label for="" class="label-form">Nome Completo</label> <br>
+        <input type="text" placeholder="Digite seu nome Completo" class="input" name="fullName" required> <br>
 
-      <div class="container-inputs">
-        <input type="text" placeholder="Digite seu nome Completo" class="input" name="fullName">
-        <select name="docType" id=""  class="input">
+        <label for="" class="label-form">Documento de Identidade</label> <br>
+        <select name="docType" id=""  class="input" >
           <% for(docType of docTypes) {%>
           <option value="<%= docType.docType %>"><%= docType.docType %></option>
           <%}%>
-        </select>
-        <input type="text" placeholder="Digite o número do documento"  class="input" name="docNumber">
-      </div>
+        </select> <br>
 
-      <div class="container-label">
-        <label for="" class="label-form">Data e Hora</label>
-        <label for="" class="label-form">Livro</label>
-        <label for="" class="label-form">Quantidade de Livros</label>
-      </div>
+        <label for="" class="label-form">Número do Documento</label> <br>          
+        <input type="text" placeholder="Digite o número do documento"  class="input" name="docNumber" required> <br>
 
-      <div class="container-inputs">
-        <input type="text" class="input" readonly placeholder="D/M/A" id="inputDate" name="dateRegister">
+
+        <label for="" class="label-form">Data e Hora</label> <br>
+        <input type="text" class="input" readonly placeholder="D/M/A" id="inputDate" name="dateRegister" required> <br>
+
+        <label for="" class="label-form">Livro</label> <br>
         <select name="livro" id=""  class="input">
           <% for( book of books ) {%>
             <option value="<%= book.book %>"><%= book.book %></option>
             <%}%>
-        </select>
+        </select><br>
+
+        <label for="" class="label-form">Quantidade de Livros</label><br>
         <select name="quantidadeLivro" id=""  class="input">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-        </select>
-      </div>
+        </select> <br>
 
-      <div class="container-label">
-        <label for="" class="label-form">Categoria do Livro</label>
-        <label for="" class="label-form">Assunto</label>
-        <label for="" class="label-form">Duração</label>
-      </div>
-
-      <div class="container-inputs">
+        <label for="" class="label-form">Categoria do Livro</label> <br>
         <select name="categoriaLivro" id=""  class="input">
           <option value="Desporto">Desporto</option>
           <option value="Cultura">Cultura</option>
           <option value="Tecnologia">Tecnologia</option>
           <option value="Ciências">Ciências</option>
-        </select>
-        
+        </select> <br>
+
+        <label for="" class="label-form">Assunto</label> <br>
         <select name="assunto" id=""  class="input">
           <% for(summary of summaries ) {%>
             <option value="Leitura e Investigação"><%= summary.summary %></option>
             <%}%>
-        </select>
+        </select> <br>
 
+        <label for="" class="label-form">Duração</label> <br>
         <select name="duracao" id=""  class="input">
           <% for(duration of durations ) {%>
             <option value="30min"><%= duration.duration %></option>
             <%}%>
-        </select>
+        </select> <br>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn-cad-form">Cadastrar</button>
       </div>
 
+  </form>
 
-        <button type="submit" class="btn-cad-form">Cadastrar</button>
-        <button type="reset" class="btn-reset-form">Limpar</button>
+    </div>
 
-    </form>
-  </main>
+  </div>
+
+  <!---Modal para as informações completa do leitor -->
+  <div class="modal-vis" id="modalVis">
+    <div class="container-modal-vis">
+      <h2 class="title-modal-vis">Informações do leitor</h2>
+
+      <label for="#" class="label-form" id="label-modal-vis">Nome Completo</label> <br>
+      <label for="#" id="fullName" class="label-infor-modal-vis"></label> <br>
+      
+      <label for="#" class="label-form" id="label-modal-vis">Tipo de documento</label> <br>
+      <label for="#" id="docType" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Número do documento</label> <br>
+      <label for="#" id="numberDoc" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Data de registo</label> <br>
+      <label for="#" id="date" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Livro</label> <br>
+      <label for="#" id="book" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Quantidade de Livro</label> <br>
+      <label for="#" id="quantybook" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Assunto</label> <br>
+      <label for="#" id="summary" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Duração</label> <br>
+      <label for="#" id="duration" class="label-infor-modal-vis"></label> <br>
+
+      <button type="button" style="float: right;" id="fecharModalVis" class="btn-close-modal-vis">Fechar</button>
+
+    </div>
+  </div>
+
+  <!---Modal para fazer alteração nos dados do leitor -->
+  <div class="modal-update" id="modalUpdate">
+    <div class="container-modal-update">
+
+      <h2 class="title-container-cad">Editar dados do leitor</h2>
+
+      <div class="main-modal-update">
+
+      <form class="form-cad" method="post" id="formModalUpdate">
+      
+        <label for="" class="label-form">Nome Completo</label> <br>
+        <input type="text" placeholder="Digite seu nome Completo" class="input" name="fullNameEdit" required id="txtFullNameEdit"> <br>
+
+        <p class="paragraphy-modal-update">
+          "O sistema permite apenas editar o nome do leitor"
+        </p>
+
+        <button type="submit" class="btn-cad-form" id="btn-cad-form-modal-update">Editar</button>
+        <button type="button" class="btn-cancel-form-modal-update" id="btnCloseModalUpdate">Cancelar</button>
+      </form>
+       
+      </div>
+     
+
+    </div>
+
+  </div>
 
   <script src="/javascripts/custom.js"></script>
+  <script src="/javascripts/modals.js"></script>
 </body>
 </html>

@@ -34,12 +34,13 @@ router.get('/dashboard', async (req, res) => {
 })
 
 router.get('/readers', async (req, res) => {
+  const readers = await readersModel.find().limit(6);
   const docTypes = await docTypeModel.find();
   const durations = await durationModel.find();
   const summaries = await summaryModel.find();
   const books = await booksModel.find();
-  res.render('readers', { title: "Leitores", books:books, docTypes:docTypes, durations:durations, summaries:summaries});
-})
+  res.render('readers', { title: "Leitores", books:books, docTypes:docTypes, durations:durations, summaries:summaries, readers:readers});
+})//Listando
 router.post('/readers', async (req, res) => {
   const { fullName, docType, docNumber, dateRegister, livro, quantidadeLivro, categoriaLivro, assunto, duracao } = req.body;
 
@@ -68,8 +69,53 @@ router.post('/readers', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-})
+})//Cadastrando
+router.post('/readers/delete/:id', async(req, res)=>{
+  const { id } = req.params;
 
+  try {
+    const response = await readersModel.deleteOne({
+      _id: id
+    });
+    if(response){
+      res.redirect('/readers');
+    }else{
+      console.log('Error')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+})//Deletando 
+router.post('/readers/update/:id', async(req, res)=>{
+  const { id } = req.params;
+  const { fullNameEdit } = req.body;
+
+  try {
+    const response = await readersModel.updateOne(
+      {
+        _id:id
+      },
+      {
+        $set:{
+          fullName: fullNameEdit
+        }
+      }
+    )
+    if(response){
+      res.send(`
+        <script>
+          alert('Editado com sucesso!');
+          window.location.href="/readers";
+        </script>  
+      `)
+    }else{
+
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})//Actualizando
 router.get('/books', async(req, res) => {
   const categoryBooks = await categoryBookModel.find();
   res.render('books', { title: "Livros", categoryBooks:categoryBooks });
