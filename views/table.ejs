@@ -14,48 +14,52 @@
   </div>
 
   <main class="container-cad">
-    <table class="table">
-      <thead>
+   <% if( tables == ''){%>
+    <h3 class="msg-inforation-user">Não existe nenhum item cadastrado!</h3>
+    <%} else{%>
+      <table class="table">
+        <thead>
+          <tr>
+          <th class="th">Mesa</th>
+          <th class="th">Capacidade</th>
+          <th class="th">Cadeiras</th>
+          <th class="th">Ações</th>
+          </tr>
+        </thead>
+      
+      <tbody>
+      <% for( table of tables ) {%>
         <tr>
-        <th class="th">Mesa</th>
-        <th class="th">Capacidade</th>
-        <th class="th">Cadeiras</th>
-        <th class="th">Ações</th>
+          <td class="td"><%= table.table %></td>
+          <td class="td"><%= table.people %></td>
+          <td class="td"><%= table.chairs %></td>
+          <td class="td" id="td-actions">
+            <button type="button" class="btn-table" id="btn-see" 
+            onclick="visData(data={
+              table: '<%= table.table %>',
+              people: '<%= table.people %>',
+              chairs:'<%= table.chairs %>'
+            })">
+            <i class="fa fa-eye" id="icon-table"></i></button>
+  
+            <button type="button" class="btn-table" id="btn-edit"
+            onclick="editData(data={
+              id: '<%= table._id %>',
+              table: '<%= table.table %>',
+              people: '<%= table.people %>',
+              chairs:'<%= table.chairs %>'
+            })"
+            >
+            <i class="fa fa-edit" id="icon-table"></i></button>
+  
+            <form action="/table/delete/<%= table.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+          </td>
         </tr>
-      </thead>
-    
-    <tbody>
-    <% for( table of tables ) {%>
-      <tr>
-        <td class="td"><%= table.table %></td>
-        <td class="td"><%= table.people %></td>
-        <td class="td"><%= table.chairs %></td>
-        <td class="td" id="td-actions">
-          <button type="button" class="btn-table" id="btn-see" 
-          onclick="visData(data={
-            table: '<%= table.table %>',
-            people: '<%= table.people %>',
-            chairs:'<%= table.chairs %>'
-          })">
-          <i class="fa fa-eye" id="icon-table"></i></button>
-
-          <button type="button" class="btn-table" id="btn-edit"
-          onclick="editData(data={
-            id: '<%= table._id %>',
-            table: '<%= table.table %>',
-            people: '<%= table.people %>',
-            chairs:'<%= table.chairs %>'
-          })"
-          >
-          <i class="fa fa-edit" id="icon-table"></i></button>
-
-          <form action="/pratiles/delete/<%= table.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
-        </td>
-      </tr>
+        <%}%>
+   
+      </tbody>
+      </table>
       <%}%>
- 
-    </tbody>
-    </table>
   </main>
 
   <!--Modal Cadstramento de nova mesa-->

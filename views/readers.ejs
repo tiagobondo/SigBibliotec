@@ -15,56 +15,60 @@
   </div>
   <!--Corpo completo-->
   <main class="container-cad">
-    <table class="table">
-      <thead>
-        <tr>
-        <th class="th">Nome completo</th>
-        <th class="th">Documento</th>
-        <th class="th">NºDocumento</th>
-        <th class="th">Data e Hora</th>
-        <th class="th">Livro</th>
-        <th class="th">Ações</th>
-        </tr>
-      </thead>
+    <% if(readers == ''){%>
+      <h3 class="msg-inforation-user"> Não existe nenhum item cadastrado!</h3>
+      <%} else{%>
+        <table class="table">
+          <thead>
+            <tr>
+            <th class="th">Nome completo</th>
+            <th class="th">Documento</th>
+            <th class="th">NºDocumento</th>
+            <th class="th">Data e Hora</th>
+            <th class="th">Livro</th>
+            <th class="th">Ações</th>
+            </tr>
+          </thead>
+        
+        <tbody>
+        <% for( reader of readers ) {%>
+          <tr>
+            <td class="td"><%= reader.fullName %></td>
+            <td class="td"><%= reader.docType %></td>
+            <td class="td"><%= reader.docNumber %></td>
+            <td class="td"><%= reader.dateRegister %></td>
+            <td class="td"><%= reader.livro %></td>
+            <td class="td" id="td-actions">
+              <button type="button" class="btn-table" id="btn-see" 
+              onclick="visData(data={
+                fullName: '<%= reader.fullName %>',
+                docType: '<%= reader.docType %>',
+                docNumber:'<%= reader.docNumber %>',
+                dateRegister:'<%= reader.dateRegister %>',
+                livro:'<%= reader.livro %>',
+                quantidadeLivro:'<%= reader.quantidadeLivro %>',
+                categoriaLivro: '<%= reader.categoriaLivro %>',
+                assunto:'<%= reader.assunto %>',
+                duracao: '<%= reader.duracao %>'
+              })">
+              <i class="fa fa-eye" id="icon-table"></i></button>
     
-    <tbody>
-    <% for( reader of readers ) {%>
-      <tr>
-        <td class="td"><%= reader.fullName %></td>
-        <td class="td"><%= reader.docType %></td>
-        <td class="td"><%= reader.docNumber %></td>
-        <td class="td"><%= reader.dateRegister %></td>
-        <td class="td"><%= reader.livro %></td>
-        <td class="td" id="td-actions">
-          <button type="button" class="btn-table" id="btn-see" 
-          onclick="visData(data={
-            fullName: '<%= reader.fullName %>',
-            docType: '<%= reader.docType %>',
-            docNumber:'<%= reader.docNumber %>',
-            dateRegister:'<%= reader.dateRegister %>',
-            livro:'<%= reader.livro %>',
-            quantidadeLivro:'<%= reader.quantidadeLivro %>',
-            categoriaLivro: '<%= reader.categoriaLivro %>',
-            assunto:'<%= reader.assunto %>',
-            duracao: '<%= reader.duracao %>'
-          })">
-          <i class="fa fa-eye" id="icon-table"></i></button>
-
-          <button type="button" class="btn-table" id="btn-edit"
-          onclick="editData(data={
-            id: '<%= reader._id %>',
-            fullName: '<%= reader.fullName %>'
-          })"
-          >
-          <i class="fa fa-edit" id="icon-table"></i></button>
-
-          <form action="/readers/delete/<%= reader.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
-        </td>
-      </tr>
-      <%}%>
- 
-    </tbody>
-    </table>
+              <button type="button" class="btn-table" id="btn-edit"
+              onclick="editData(data={
+                id: '<%= reader._id %>',
+                fullName: '<%= reader.fullName %>'
+              })"
+              >
+              <i class="fa fa-edit" id="icon-table"></i></button>
+    
+              <form action="/readers/delete/<%= reader.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+            </td>
+          </tr>
+          <%}%>
+     
+        </tbody>
+        </table>
+        <%}%>
     
     <div class="tfooter">
         

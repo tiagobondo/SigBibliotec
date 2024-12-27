@@ -861,6 +861,15 @@ body{
   padding-bottom: 15px;
 }
 
+/*Information SMS*/
+.msg-inforation-user{
+  text-align: center;
+  font-family: Strait;
+  font-weight: normal;
+  color: var(--cor11);
+}
+/*Information SMS*/
+
 /*Table*/
 
 .table{

@@ -301,7 +301,7 @@ router.post('/pratiles', async (req, res) => {
     console.log(error);
   }
 })//Cadastrando
-router.post('/pratile/delete/:id', async(req, res) => {
+router.post('/pratiles/delete/:id', async(req, res) => {
   const { id } = req.params;
   try {
     const response = await pratilesModel.deleteOne({
@@ -346,7 +346,7 @@ router.post('/pratiles/update', async(req, res)=>{
   } catch (error) {
     console.log(error)
   }
-})
+})//Actualizando
 
 router.get('/profile', (req, res) => {
   res.render('profile', { title: "Perfil" })
