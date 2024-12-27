@@ -176,11 +176,12 @@ body{
 .title-readrs{
   font-family: Strait;
   color: var(--cor07);
-  float: left;
 }
 
 .container-head{
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 .btn-vis{
   padding: 15px;
@@ -193,7 +194,6 @@ body{
   background-color: var(--cor4);
   color: var(--cor02);
   transition: .1s;
-  float: right;
 }
 
 .btn-vis:hover{
@@ -876,7 +876,6 @@ body{
   border: 1px solid var(--cor18);
   border-collapse: collapse;
   margin: auto;
-  margin-top: 2%;
   box-shadow: 0 0 10px var(--cor11);
 }
 
