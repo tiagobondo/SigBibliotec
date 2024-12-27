@@ -8,56 +8,204 @@
 </head>
 <body>
   <%- include('partials/header.ejs')%>
-
+  <!--Conteudo no Topo-->
   <div class="container-head">
-    <h2 class="title-readrs">Livros</h2> <button type="button" class="btn-vis">Ver Livros</button>
+    <h2 class="title-readrs">Livros</h2> <button type="button" class="btn-vis" id="btnViewModalCad">Novo</button>
   </div>
+    <!--Conteudo no Topo-->
 
   <main class="container-cad">
-    <h2 class="title-container-cad">Cadastramento de Livros</h2>
+    <table class="table">
+      <thead>
+        <tr>
+        <th class="th">Livro</th>
+        <th class="th">Categoria</th>
+        <th class="th">Nºs no Stock</th>
+        <th class="th">Editora</th>
+        <th class="th">Edição</th>
+        <th class="th">Autor</th>
+        <th class="th">Fornecidor</th>
+        <th class="th">Ações</th>
+        </tr>
+      </thead>
+    
+    <tbody>
+    <% for( book of books ) {%>
+      <tr>
+        <td class="td"><%= book.book %></td>
+        <td class="td"><%= book.categoryBook %></td>
+        <td class="td"><%= book.numberBooks %></td>
+        <td class="td"><%= book.editor %></td>
+        <td class="td"><%= book.edition %></td>
+        <td class="td"><%= book.author %></td>
+        <td class="td"><%= book.provider %></td>
+        <td class="td" id="td-actions">
+          <button type="button" class="btn-table" id="btn-see" 
+          onclick="visData(data={
+            book: '<%= book.book %>',
+            categoryBook: '<%= book.categoryBook %>',
+            numberBooks:'<%= book.numberBooks %>',
+            editor:'<%= book.editor %>',
+            edition:'<%= book.edition %>',
+            author:'<%= book.author %>',
+            provider: '<%= book.provider %>'
+          })">
+          <i class="fa fa-eye" id="icon-table"></i></button>
 
-    <form class="form-cad" method="post">
+          <button type="button" class="btn-table" id="btn-edit"
+          onclick="editData(data={
+            id: '<%= book._id %>',
+            book: '<%= book.book %>',
+            categoryBook: '<%= book.categoryBook %>',
+            numberBooks:'<%= book.numberBooks %>',
+            editor:'<%= book.editor %>',
+            edition:'<%= book.edition %>',
+            author:'<%= book.author %>',
+            provider: '<%= book.provider %>'
+          })"
+          >
+          <i class="fa fa-edit" id="icon-table"></i></button>
 
-      <div class="container-label">
-        <label for="" class="label-form">Livro</label>
-        <label for="" class="label-form">Categoria</label>
-        <label for="" class="label-form">Quantidade no Stock</label>
-      </div>
-
-      <div class="container-inputs">
-        <input type="text" placeholder="Digite seu o nome do Livro" class="input" name="book">
-        <select name="categoryBook" id=""  class="input">
-          <% for( categoryBook of categoryBooks ) {%>
-          <option value="<%= categoryBook.categoryBook %>"><%= categoryBook.categoryBook %></option>
-          <%}%>
-        </select>
-        <input type="number" placeholder="Digite o número de livros no Stock"  class="input" name="numberBooks">
-      </div>
-
-      <div class="container-label">
-        <label for="" class="label-form">Editora</label>
-        <label for="" class="label-form">Edição</label>
-        <label for="" class="label-form">Autor</label>
-      </div>
-
-      <div class="container-inputs">
-        <input type="text" placeholder="Digite a editora" class="input" name="editor">
-        <input type="text" placeholder="Digite a edição" class="input" name="edition">
-        <input type="text" placeholder="Digite nome do Autor ou Autores" class="input" name="author">
-      </div>
-
-      <div class="container-label">
-        <label for="" class="label-form">Fornecidor</label>
-      </div>
-
-      <div class="container-inputs">
-        <input type="text" placeholder="Digite o nome do fornecidor" class="input" name="provider">
-      </div>
-
-      <button type="submit" class="btn-cad-form">Cadastrar</button>
-      <button type="reset" class="btn-reset-form">Limpar</button>
-
-    </form>
+          <form action="/books/delete/<%= book.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+        </td>
+      </tr>
+      <%}%>
+ 
+    </tbody>
+    </table>
+    
+    <div class="tfooter">
+        
+    </div>
   </main>
+
+  <!--Modal para cadastramento de novo livro-->
+  <div class="modal-Cad" id="modalCad">
+    <div class="container-modal-Cad">
+      <button type="button" id="fechar" class="btn-close">X</button>
+
+      <h2 class="title-container-cad">Cadastramento de Livros</h2>
+
+      <div class="main-modal">
+      <form class="form-cad" method="post">
+  
+
+          <label for="" class="label-form">Livro</label> <br>
+          <input type="text" placeholder="Digite o nome do Livro" class="input" name="book"> <br>
+
+          <label for="" class="label-form">Categoria</label> <br>
+          <select name="categoryBook" id=""  class="input">
+            <% for( categoryBook of categoryBooks ) {%>
+            <option value="<%= categoryBook.categoryBook %>"><%= categoryBook.categoryBook %></option>
+            <%}%>
+          </select> <br>
+
+          <label for="" class="label-form">Quantidade no Stock</label> <br>
+          <input type="number" placeholder="Digite o número de livros no Stock"  class="input" name="numberBooks"> <br>  
+  
+
+          <label for="" class="label-form">Editora</label> <br>
+          <input type="text" placeholder="Digite a editora" class="input" name="editor"> <br>
+
+          <label for="" class="label-form">Edição</label> <br>
+          <input type="text" placeholder="Digite a edição" class="input" name="edition"> <br>
+
+          <label for="" class="label-form">Autor</label> <br>
+          <input type="text" placeholder="Digite nome do Autor ou Autores" class="input" name="author"> <br>
+  
+          <label for="" class="label-form">Fornecidor</label> <br>
+          <input type="text" placeholder="Digite o nome do fornecidor" class="input" name="provider"> <br>
+        </div>
+          <div class="modal-footer">
+        <button type="submit" class="btn-cad-form">Cadastrar</button>
+        <button type="reset" class="btn-reset-form">Limpar</button>
+      </div>
+  
+      </form>
+
+    </div>
+  </div>
+   <!--Modal para cadastramento de novo livro-->
+
+    <!--Modal para actualização de livro-->
+  <div class="modal-update-book" id="modalUpdate">
+    <div class="container-modal-update-book">
+      <div class="container-modal-Cad">
+        <button type="button" id="fechar" class="btn-close">X</button>
+  
+        <h2 class="title-container-cad">Editar Livro</h2>
+  
+        <div class="main-modal">
+        <form class="form-cad" method="post" action="/books/update">
+            <input type="hidden" name="id" id="id" readonly > <br>
+  
+            <label for="" class="label-form">Livro</label> <br>
+            <input type="text" placeholder="Digite o nome do Livro" class="input" name="book" id="bookedit"> <br>
+  
+            <label for="" class="label-form">Categoria</label> <br>
+            <select name="categoryBook" id=""  class="input">
+              <% for( categoryBook of categoryBooks ) {%>
+              <option value="<%= categoryBook.categoryBook %>"><%= categoryBook.categoryBook %></option>
+              <%}%>
+            </select> <br>
+  
+            <label for="" class="label-form">Quantidade no Stock</label> <br>
+            <input type="number" placeholder="Digite o número de livros no Stock"  class="input" name="numberBooks" id="numberBooksedit"> <br>  
+    
+  
+            <label for="" class="label-form">Editora</label> <br>
+            <input type="text" placeholder="Digite a editora" class="input" name="editor" id="editoredit"> <br>
+  
+            <label for="" class="label-form">Edição</label> <br>
+            <input type="text" placeholder="Digite a edição" class="input" name="edition" id="editionedit"> <br>
+  
+            <label for="" class="label-form">Autor</label> <br>
+            <input type="text" placeholder="Digite nome do Autor ou Autores" class="input" name="author" id="authoredit"> <br>
+    
+            <label for="" class="label-form">Fornecidor</label> <br>
+            <input type="text" placeholder="Digite o nome do fornecidor" class="input" name="provider" id="provideredit"> <br>
+          </div>
+            <div class="modal-footer">
+          <button type="submit" class="btn-cad-form">Editar</button>
+        </div>
+    
+        </form>
+  
+      </div>
+    </div>
+  </div>
+   <!--Modal para actualização de livro-->
+
+    <!--Modal para visualização de livro-->
+  <div class="modal-vis" id="modalVis">
+    <div class="container-modal-vis">
+      <h2 class="title-modal-vis">Informações sobre o Livro</h2>
+
+      <label for="#" class="label-form" id="label-modal-vis">Livro</label> <br>
+      <label for="#" id="book" class="label-infor-modal-vis"></label> <br>
+      
+      <label for="#" class="label-form" id="label-modal-vis">Categoria</label> <br>
+      <label for="#" id="categoryBook" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Número no Stock</label> <br>
+      <label for="#" id="numberBooks" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Editora</label> <br>
+      <label for="#" id="editor" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Edição</label> <br>
+      <label for="#" id="edition" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Autor</label> <br>
+      <label for="#" id="author" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Fornecidor</label> <br>
+      <label for="#" id="provider" class="label-infor-modal-vis"></label> <br>
+
+      <button type="button" style="float: right;" id="fecharModalVis" class="btn-close-modal-vis">Fechar</button>
+  </div>
+  <!--Modal para visualização de livro-->
+
+  <script src="/javascripts/books.js"></script>
 </body>
 </html>

@@ -622,6 +622,7 @@ body{
 .modal-footer{
   height: 65px;
   box-shadow: 0 0 10px var(--cor09);
+  display: flex;
 }
 
 .btn-close{
@@ -675,6 +676,189 @@ body{
 
 .btn-close:active{
   color: var(--cor02);
+}
+
+
+.modal-Cad{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-Cad.openModalCad{
+  display: flex;
+}
+
+.container-modal-Cad{
+  width: 500px;
+  height: 100%;
+  background-color: var(--cor02);
+}
+
+.modal-vis{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-vis.openModalVis{
+  display: flex;
+}
+
+.modal-update-book{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-update-book.openModalUpdateBook{
+  display: flex;
+}
+
+.container-modal-update-book{
+  width: 500px;
+  height: 100% ;
+  background-color: var(--cor02);
+}
+
+.modal-cad-table{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-cad-table.openModalCadTable{
+  display: flex;
+}
+
+.container-modal-Cad-table{
+  width: 500px;
+  height: 100%;
+  background-color: var(--cor02);
+}
+
+.modal-vis-table{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-vis-table.openModalVisTable{
+  display: flex;
+}
+
+.container-modal-vis-table{
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 500px;
+  height: 40%;
+  background-color: var(--cor02);
+} 
+
+.modal-update-table{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-update-table.openModalUpdateTable{
+  display: flex;
+}
+
+.container-modal-update-table{
+}
+
+.modal-cad-pratiles{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center; 
+}
+
+.modal-cad-pratiles.openModalCadPratiles{
+  display: flex;
+}
+
+.container-modal-Cad-table{
+  width: 500px;
+  height: 55%;
+  background-color: var(--cor02);
+} 
+
+.modal-vis-pratiles{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-vis-pratiles.openModalVisPratiles{
+  display: flex;
+} 
+
+.container-modal-vis-pratiles{
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 500px;
+  height: 35%;
+  background-color: var(--cor02);
+} 
+
+.modal-update-pratiles{
+  width: 100%;
+  height: 100%;
+  background-color: var(--cor11);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-update-pratiles.openModalUpdatePratiles{
+  display: flex;
+}
+
+#modal-footer-pratiles{
+  padding-bottom: 15px;
 }
 
 /*Table*/

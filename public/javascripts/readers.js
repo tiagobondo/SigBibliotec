@@ -1,18 +1,19 @@
 const btnModal = document.querySelector('#btnViewModal');
 const modal = document.querySelector('#modal');
-const btnFechar = document.querySelector('#fechar');
 
 btnModal.addEventListener('click', (e)=>{
   //Criando uma class dentro do modal
   modal.classList.add('abrir');
+
+  //Dando acção no modal e no botao fechar
+  modal.addEventListener('click', (e)=>{
+    if(e.target.id == "fechar" || e.target.id == "modal"){
+      modal.classList.remove('abrir');
+    }
+  })
 })
 
-btnFechar.addEventListener('click', ()=>{
-  //Removendo a classa anteriormente criada
-  modal.classList.remove('abrir');
-})
-
-//Trazendo os elementos labels para posteriormente serm atribuidos lá dados do leitor
+//Trazendo os elementos labels para posteriormente serem atribuidos lá dados do leitor
 const fullName = document.querySelector('#fullName'); 
 const docType = document.querySelector('#docType'); 
 const numberDoc = document.querySelector('#numberDoc'); 
@@ -40,7 +41,13 @@ const visData = (data) => {
 
   //Criando uma class dentro do modalVis
   modalVis.classList.add('openModalVis');
-  //
+  //Dando acção ao modalVis
+  modalVis.addEventListener('click', (e)=>{
+    if(e.target.id == "modalVis"){
+      modalVis.classList.remove('openModalVis');
+    }
+  })
+
   fecharModalVis.addEventListener('click', ()=>{
     //Removendo a class anteriormente criada
     modalVis.classList.remove('openModalVis');
@@ -56,6 +63,12 @@ const formModalUpdate = document.querySelector('#formModalUpdate');
 const editData = (data) => {
   //Criando uma class dentro do modalUpdate
   modalUpdate.classList.add('openModalUpdate');
+  //Dando acção ao modalUpdate
+  modalUpdate.addEventListener('click', (e)=>{
+    if(e.target.id == "modalUpdate"){
+      modalUpdate.classList.remove('openModalUpdate');
+    }
+  })
 
   txtFullNameEdit.value = data.fullName;
 

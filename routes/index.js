@@ -116,10 +116,12 @@ router.post('/readers/update/:id', async(req, res)=>{
     console.log(error);
   }
 })//Actualizando
+
 router.get('/books', async(req, res) => {
   const categoryBooks = await categoryBookModel.find();
-  res.render('books', { title: "Livros", categoryBooks:categoryBooks });
-})
+  const books = await booksModel.find();
+  res.render('books', { title: "Livros", categoryBooks:categoryBooks, books:books });
+})//Listando
 router.post('/books', async (req, res) => {
   const { book, categoryBook, numberBooks, editor, edition, author, provider } = req.body;
 
@@ -147,11 +149,62 @@ router.post('/books', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-})
+})//Cadastrando
+router.post('/books/delete/:id', async(req, res)=>{
+  const { id } = req.params;
+  try {
+    const response = await booksModel.deleteOne({
+      _id: id
+    });
+    if(response){
+      res.redirect('/books');
+    }else{
+      console.log('Error')
+    }
+  } catch (error) {
+    console.log(error);
+  }
 
-router.get('/tables', (req, res) => {
-  res.render('table', { title: "Mesas" })
-})
+})//Deletando
+router.post('/books/update', async(req, res) => {
+  const { id, book, categoryBook, numberBooks, editor, edition, author, provider } = req.body;
+
+  try {
+    const response = await booksModel.updateOne(
+      {
+        _id:id
+      },
+      {
+        $set:{
+          book,
+          categoryBook,
+          numberBooks,
+          editor,
+          edition,
+          author,
+          provider
+        }
+      }
+    )
+    if(response){
+      res.send(`
+        <script>
+          alert('Editado com sucesso!');
+          window.location.href="/books";
+        </script>  
+      `)
+    }else{
+
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})//Actualizando
+
+router.get('/tables', async(req, res) => {
+  const tables = await tablesModel.find();
+  res.render('table', { title: "Mesas", tables:tables });
+})//Listando
 router.post('/tables', async (req, res) => {
   const { table, people, chairs } = req.body;
 
@@ -175,11 +228,57 @@ router.post('/tables', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-})
+})//Cadastrando
+router.post('/table/delete/:id', async(req, res)=>{
+  const { id } = req.params;
+  try {
+    const response = await tablesModel.deleteOne({
+      _id: id
+    });
+    if(response){
+      res.redirect('/tables');
+    }else{
+      console.log('Error')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})//Dletando
+router.post('/tables/update', async(req, res)=> {
+  const { id, table, people, chairs } = req.body;
 
-router.get('/pratiles', (req, res) => {
-  res.render('pratiles', { title: "Prateleiras" })
-})
+  try {
+    const response = await tablesModel.updateOne(
+      {
+        _id:id
+      },
+      {
+        $set:{
+          table,
+          people,
+          chairs
+        }
+      }
+    )
+    if(response){
+      res.send(`
+        <script>
+          alert('Editado com sucesso!');
+          window.location.href="/tables";
+        </script>  
+      `)
+    }else{
+
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})//Actualizando
+
+router.get('/pratiles', async(req, res) => {
+  const pratiles = await pratilesModel.find();
+  res.render('pratiles', { title: "Prateleiras", pratiles:pratiles })
+})//Listando
 router.post('/pratiles', async (req, res) => {
   const { pratiles, capacityBooks } = req.body;
 
@@ -200,6 +299,52 @@ router.post('/pratiles', async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+  }
+})//Cadastrando
+router.post('/pratile/delete/:id', async(req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await pratilesModel.deleteOne({
+      _id: id
+    });
+    if(response){
+      res.redirect('/pratiles');
+    }else{
+      console.log('Error')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})//Deletando
+router.post('/pratiles/update', async(req, res)=>{
+  const { id, pratiles, capacityBooks } = req.body;
+
+  try {
+    const response = await pratilesModel.updateOne(
+      {
+        _id: id
+      },
+      {
+        $set:{
+          pratiles: pratiles,
+          capacityBooks: capacityBooks
+        }
+      }
+    )
+    if(response){
+      res.send(
+        `
+          <script>
+            alert('Editado com sucesso!');
+            window.location.href = "/pratiles"
+          </script>
+        `
+      )
+    }else{
+
+    }
+  } catch (error) {
+    console.log(error)
   }
 })
 

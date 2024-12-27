@@ -10,26 +10,124 @@
   <%- include('partials/header.ejs')%>
 
   <div class="container-head">
-    <h2 class="title-readrs">Pratileiras</h2> <button type="button" class="btn-vis">Ver Pratileiras</button>
+    <h2 class="title-readrs">Pratileiras</h2> <button type="button" class="btn-vis" id="modalViewCad">Novo</button>
   </div>
 
   <main class="container-cad">
-    <h2 class="title-container-cad">Cadastramento de Pratileiras</h2>
+    <table class="table">
+      <thead>
+        <tr>
+        <th class="th">Pratileira</th>
+        <th class="th">Capacidade</th>
+        <th class="th">Ações</th>
+        </tr>
+      </thead>
+    
+    <tbody>
+    <% for( pratile of pratiles ) {%>
+      <tr>
+        <td class="td"><%= pratile.pratiles %></td>
+        <td class="td"><%= pratile.capacityBooks %></td>
+        <td class="td" id="td-actions">
+          <button type="button" class="btn-table" id="btn-see" 
+          onclick="visData(data={
+            pratiles: '<%= pratile.pratiles %>',
+            capacityBooks: '<%= pratile.capacityBooks %>'
+          })">
+          <i class="fa fa-eye" id="icon-table"></i></button>
 
-    <form class="form-cad" method="post">
-      <div class="container-label">
-        <label for="" class="label-form">Pratileira</label>
-        <label for="" class="label-form">Capacidade</label>
-      </div>
+          <button type="button" class="btn-table" id="btn-edit"
+          onclick="editData(data={
+            id: '<%= pratile._id %>',
+            pratiles: '<%= pratile.pratiles %>',
+            capacityBooks: '<%= pratile.capacityBooks %>'
+          })"
+          >
+          <i class="fa fa-edit" id="icon-table"></i></button>
 
-      <div class="container-inputs">
-        <input type="text" placeholder="Digite o nome da pratileira ex(Pratileira01)" class="input" name="pratiles">
-        <input type="text" placeholder="Digite a capacidade de livros na pratilheira" class="input" name="capacityBooks">
-      </div>
-
-      <button type="submit" class="btn-cad-form">Cadastrar</button>
-      <button type="reset" class="btn-reset-form">Limpar</button>
-    </form>
+          <form action="/pratile/delete/<%= pratile.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+        </td>
+      </tr>
+      <%}%>
+ 
+    </tbody>
+    </table>
+   
   </main>
+
+ <!--Modal para Cadastramento de nova pratileir-->
+ <div class="modal-cad-pratiles" id="modalCadPratiles">
+  <div class="container-modal-Cad-table">
+    <button type="button" id="fechar" class="btn-close">X</button>
+
+    <h2 class="title-container-cad">Cadastramento de Pratileiras</h2>
+    <div class="main-modal">
+      <form class="form-cad" method="post">
+
+          <label for="" class="label-form">Pratileira</label> <br>
+          <input type="text" placeholder="Digite o nome da pratileira ex(Pratileira01)" class="input" name="pratiles"> <br>
+          
+          <label for="" class="label-form">Capacidade</label> <br>        
+          <input type="text" placeholder="Digite a capacidade de livros na pratilheira" class="input" name="capacityBooks"> <br>
+
+         
+          <div class="modal-footer">
+            <button type="submit" class="btn-cad-form">Cadastrar</button>
+            <button type="reset" class="btn-reset-form">Limpar</button>
+          </div>
+        </div>
+      </form>
+ </div>
+</div>
+ 
+  <!--Modal para Cadastramento de nova pratileir-->
+
+    <!--Modal visualização de pratileiras-->
+    <div class="modal-vis-pratiles" id="modalVisPratiles">
+      <div class="container-modal-vis-pratiles">
+  
+        <h2 class="title-modal-vis">Informações sobre a pratileira</h2>
+  
+        <label for="#" class="label-form" id="label-modal-vis">Pratileira</label> <br>
+        <label for="#" id="pratile" class="label-infor-modal-vis"></label> <br>
+  
+        <label for="#" class="label-form" id="label-modal-vis">Capacidade</label> <br>
+        <label for="#" id="capacityBooks" class="label-infor-modal-vis"></label> <br>
+  
+        <button type="button" style="float: right;" id="fecharModalVis" class="btn-close-modal-vis">Fechar</button>
+      </div>
+  
+     </div>
+     <!--Modal visualização de pratileiras-->
+
+     <!--Modal Para Actualização de pratileiras-->
+     <div class="modal-update-pratiles" id="modalUpdatePratiles">
+      <div class="container-modal-update-pratiles">
+        <div class="container-modal-Cad">
+          <button type="button" id="fechar" class="btn-close">X</button>
+    
+          <h2 class="title-container-cad">Editar Pratileira</h2>
+          <div class="main-modal-update-table">
+            <form class="form-cad" method="post" action="/pratiles/update">
+              <input type="hidden" name="id" id="id"> <br>
+
+              <label for="" class="label-form">Pratileira</label> <br>
+              <input type="text" placeholder="Digite o nome da pratileira ex(Pratileira01)" class="input" name="pratiles" id="pratiledit"> <br>
+      
+              <label for="" class="label-form">Capacidade</label> <br>        
+              <input type="text" placeholder="Digite a capacidade de livros na pratilheira" class="input" name="capacityBooks" id="capacityBooksedit"> <br>
+
+            </div>
+            <div class="modal-footer" id="modal-footer-pratiles">
+              <button type="submit" class="btn-cad-form">Editar</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+     <!--Modal Para Actualização de pratileiras-->
+
+  <script src="/javascripts/pratiles.js"></script>
 </body>
 </html>

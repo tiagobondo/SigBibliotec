@@ -10,28 +10,137 @@
   <%- include('partials/header')%>
 
   <div class="container-head">
-    <h2 class="title-readrs">Mesas</h2> <button type="button" class="btn-vis">Ver Mesas</button>
+    <h2 class="title-readrs">Mesas</h2> <button type="button" class="btn-vis" id="modalViewCad">Novo</button>
   </div>
 
   <main class="container-cad">
-    <h2 class="title-container-cad">Cadastramento de Mesas</h2>
+    <table class="table">
+      <thead>
+        <tr>
+        <th class="th">Mesa</th>
+        <th class="th">Capacidade</th>
+        <th class="th">Cadeiras</th>
+        <th class="th">Ações</th>
+        </tr>
+      </thead>
+    
+    <tbody>
+    <% for( table of tables ) {%>
+      <tr>
+        <td class="td"><%= table.table %></td>
+        <td class="td"><%= table.people %></td>
+        <td class="td"><%= table.chairs %></td>
+        <td class="td" id="td-actions">
+          <button type="button" class="btn-table" id="btn-see" 
+          onclick="visData(data={
+            table: '<%= table.table %>',
+            people: '<%= table.people %>',
+            chairs:'<%= table.chairs %>'
+          })">
+          <i class="fa fa-eye" id="icon-table"></i></button>
 
+          <button type="button" class="btn-table" id="btn-edit"
+          onclick="editData(data={
+            id: '<%= table._id %>',
+            table: '<%= table.table %>',
+            people: '<%= table.people %>',
+            chairs:'<%= table.chairs %>'
+          })"
+          >
+          <i class="fa fa-edit" id="icon-table"></i></button>
+
+          <form action="/pratiles/delete/<%= table.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+        </td>
+      </tr>
+      <%}%>
+ 
+    </tbody>
+    </table>
+  </main>
+
+  <!--Modal Cadstramento de nova mesa-->
+  <div class="modal-cad-table" id="modalCadTable">
+    <div class="container-modal-Cad-table">
+      <button type="button" id="fechar" class="btn-close">X</button>
+
+      <h2 class="title-container-cad">Cadastramento de Mesas</h2>
+
+    <div class="main-modal">
     <form class="form-cad" method="post">
-      <div class="container-label">
-        <label for="" class="label-form">Mesa</label>
-        <label for="" class="label-form">Capacidade</label>
-        <label for="" class="label-form">Cadeiras</label>
-      </div>
 
-      <div class="container-inputs">
-        <input type="text" placeholder="Digite o nome da mesa ex(Mesa01)" class="input" name="table">
-        <input type="text" placeholder="Digite a capacidade de alunos na mesa" class="input" name="people">
+        <label for="" class="label-form">Mesa</label> <br>
+        <input type="text" placeholder="Digite o nome da mesa ex(Mesa01)" class="input" name="table"> <br>
+
+        <label for="" class="label-form">Capacidade</label> <br>
+        <input type="text" placeholder="Digite a capacidade de alunos na mesa" class="input" name="people"> <br>
+
+        <label for="" class="label-form">Cadeiras</label> <br>     
         <input type="text" placeholder="Digite nºs de cadeiras nesta mesa" class="input" name="chairs">
-      </div>
 
+    </div>
+      <div class="modal-footer">
       <button type="submit" class="btn-cad-form">Cadastrar</button>
       <button type="reset" class="btn-reset-form">Limpar</button>
+    </div>
     </form>
-  </main>
+
+    </div>
+  </div>
+  <!--Modal Cadstramento de nova mesa-->
+
+   <!--Modal visualização de mesa-->
+   <div class="modal-vis-table" id="modalVisTable">
+    <div class="container-modal-vis-table">
+
+      <h2 class="title-modal-vis">Informações sobre a mesa</h2>
+
+      <label for="#" class="label-form" id="label-modal-vis">Mesa</label> <br>
+      <label for="#" id="table" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Capacidade</label> <br>
+      <label for="#" id="people" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Cadeiras</label> <br>
+      <label for="#" id="chairs" class="label-infor-modal-vis"></label> <br>
+
+      <button type="button" style="float: right;" id="fecharModalVis" class="btn-close-modal-vis">Fechar</button>
+    </div>
+
+   </div>
+   <!--Modal visualização de mesa-->
+
+   <!--Modal Actualização de mesa-->
+  <div class="modal-update-table" id="modalUpdateTable">
+    <div class="container-modal-update-table">
+      <div class="container-modal-Cad">
+        <button type="button" id="fechar" class="btn-close">X</button>
+  
+        <h2 class="title-container-cad">Editar Mesa</h2>
+        <div class="main-modal-update-table">
+          <form class="form-cad" method="post" action="/tables/update">
+
+            <input type="text" name="id" id="id"> <br>
+
+            <label for="" class="label-form">Mesa</label> <br>
+            <input type="text" placeholder="Digite o nome da mesa ex(Mesa01)" class="input" name="table" id="tabledit"> <br>
+    
+            <label for="" class="label-form">Capacidade</label> <br>
+            <input type="text" placeholder="Digite a capacidade de alunos na mesa" class="input" name="people" id="peopledit"> <br>
+    
+            <label for="" class="label-form">Cadeiras</label> <br>     
+            <input type="text" placeholder="Digite nºs de cadeiras nesta mesa" class="input" name="chairs" id="chairsid">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn-cad-form">Editar</button>
+            <button type="reset" class="btn-reset-form">Limpar</button>
+          </div>
+        </form>
+          
+    </div>
+
+  </div>
+   <!--Modal Actualização de mesa-->
+
+  <script src="/javascripts/tables.js"></script>
 </body>
 </html>
