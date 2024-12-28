@@ -555,8 +555,12 @@ body{
   padding-left: 2%;
   padding-right: 2%;
   width: 600px;
-  height: 440px;
+  height: 490px;
   background-color: var(--cor02);
+}
+
+#container-modal-vis-books{
+  height: 450px;
 }
 
 .container-modal-update{
@@ -623,6 +627,15 @@ body{
   height: 65px;
   box-shadow: 0 0 10px var(--cor09);
   display: flex;
+}
+
+#modal-footer-editTable{
+  padding: 10px;
+}
+
+#modal-footer-cad-table{
+  padding: 10px;
+  background-color: var(--cor02);
 }
 
 .btn-close{

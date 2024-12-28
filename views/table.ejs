@@ -82,7 +82,7 @@
         <input type="text" placeholder="Digite nºs de cadeiras nesta mesa" class="input" name="chairs">
 
     </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="modal-footer-cad-table">
       <button type="submit" class="btn-cad-form">Cadastrar</button>
       <button type="reset" class="btn-reset-form">Limpar</button>
     </div>
@@ -123,7 +123,7 @@
         <div class="main-modal-update-table">
           <form class="form-cad" method="post" action="/tables/update">
 
-            <input type="text" name="id" id="id"> <br>
+            <input type="text" name="id" id="id" hidden> <br>
 
             <label for="" class="label-form">Mesa</label> <br>
             <input type="text" placeholder="Digite o nome da mesa ex(Mesa01)" class="input" name="table" id="tabledit"> <br>
@@ -134,9 +134,8 @@
             <label for="" class="label-form">Cadeiras</label> <br>     
             <input type="text" placeholder="Digite nºs de cadeiras nesta mesa" class="input" name="chairs" id="chairsid">
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" id="modal-footer-editTable">
             <button type="submit" class="btn-cad-form">Editar</button>
-            <button type="reset" class="btn-reset-form">Limpar</button>
           </div>
         </form>
           
