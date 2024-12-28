@@ -119,11 +119,12 @@ router.post('/readers/update/:id', async(req, res)=>{
 
 router.get('/books', async(req, res) => {
   const categoryBooks = await categoryBookModel.find();
+  const pratiles = await pratilesModel.find();
   const books = await booksModel.find();
-  res.render('books', { title: "Livros", categoryBooks:categoryBooks, books:books });
+  res.render('books', { title: "Livros", categoryBooks:categoryBooks, books:books, pratiles:pratiles });
 })//Listando
 router.post('/books', async (req, res) => {
-  const { book, categoryBook, numberBooks, editor, edition, author, provider } = req.body;
+  const { book, categoryBook, numberBooks, editor, edition, author, provider, pratile } = req.body;
 
   try {
     const data = new booksModel({
@@ -133,7 +134,8 @@ router.post('/books', async (req, res) => {
       editor,
       edition,
       author,
-      provider
+      provider,
+      pratile
     })
 
     const response = await data.save();
@@ -167,7 +169,7 @@ router.post('/books/delete/:id', async(req, res)=>{
 
 })//Deletando
 router.post('/books/update', async(req, res) => {
-  const { id, book, categoryBook, numberBooks, editor, edition, author, provider } = req.body;
+  const { id, book, categoryBook, numberBooks, editor, edition, author, provider, pratile } = req.body;
 
   try {
     const response = await booksModel.updateOne(
@@ -182,7 +184,8 @@ router.post('/books/update', async(req, res) => {
           editor,
           edition,
           author,
-          provider
+          provider,
+          pratile
         }
       }
     )

@@ -34,6 +34,11 @@ const schemaBooks = mongoose.Schema({
   provider:{
     required: true,
     type: String
+  },
+
+  pratile:{
+    required: true,
+    type: String
   }
 })
 

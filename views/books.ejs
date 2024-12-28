@@ -51,7 +51,8 @@
                 editor:'<%= book.editor %>',
                 edition:'<%= book.edition %>',
                 author:'<%= book.author %>',
-                provider: '<%= book.provider %>'
+                provider: '<%= book.provider %>',
+                pratile: '<%= book.pratile %>'
               })">
               <i class="fa fa-eye" id="icon-table"></i></button>
     
@@ -64,7 +65,8 @@
                 editor:'<%= book.editor %>',
                 edition:'<%= book.edition %>',
                 author:'<%= book.author %>',
-                provider: '<%= book.provider %>'
+                provider: '<%= book.provider %>',
+                pratile: '<%= book.pratile %>'
               })"
               >
               <i class="fa fa-edit" id="icon-table"></i></button>
@@ -88,7 +90,7 @@
     <div class="container-modal-Cad">
       <button type="button" id="fechar" class="btn-close">X</button>
 
-      <h2 class="title-container-cad">Cadastramento de Livros</h2>
+      <h2 class="title-container-cad">Cadastramento de Livro</h2>
 
       <div class="main-modal">
       <form class="form-cad" method="post">
@@ -119,6 +121,15 @@
   
           <label for="" class="label-form">Fornecidor</label> <br>
           <input type="text" placeholder="Digite o nome do fornecidor" class="input" name="provider"> <br>
+
+          <label for="" class="label-form">Pratileira</label> <br>
+          <select name="pratile" id=""  class="input">
+            <% for( pratile of pratiles ) {%>
+            <option value="<%= pratile.pratiles %>"><%= pratile.pratiles %></option>
+            <%}%>
+          </select> <br>
+
+
         </div>
           <div class="modal-footer">
         <button type="submit" class="btn-cad-form">Cadastrar</button>
@@ -168,6 +179,14 @@
     
             <label for="" class="label-form">Fornecidor</label> <br>
             <input type="text" placeholder="Digite o nome do fornecidor" class="input" name="provider" id="provideredit"> <br>
+
+            <label for="" class="label-form">Pratileira</label> <br>
+          <select name="pratile" id=""  class="input">
+            <option value="" id="option1"></option>
+            <% for( pratile of pratiles ) {%>
+            <option value="<%= pratile.pratiles %>"><%= pratile.pratiles %></option>
+            <%}%>
+          </select> <br>
           </div>
             <div class="modal-footer">
           <button type="submit" class="btn-cad-form">Editar</button>
@@ -205,6 +224,9 @@
 
       <label for="#" class="label-form" id="label-modal-vis">Fornecidor</label> <br>
       <label for="#" id="provider" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Pratileira</label> <br>
+      <label for="#" id="pratile" class="label-infor-modal-vis"></label> <br>
 
       <button type="button" style="float: right;" id="fecharModalVis" class="btn-close-modal-vis">Fechar</button>
   </div>
