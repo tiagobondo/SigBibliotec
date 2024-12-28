@@ -39,10 +39,11 @@ router.get('/readers', async (req, res) => {
   const durations = await durationModel.find();
   const summaries = await summaryModel.find();
   const books = await booksModel.find();
-  res.render('readers', { title: "Leitores", books:books, docTypes:docTypes, durations:durations, summaries:summaries, readers:readers});
+  const tables = await tablesModel.find();
+  res.render('readers', { title: "Leitores", books: books, docTypes: docTypes, durations: durations, summaries: summaries, readers: readers, tables: tables });
 })//Listando
 router.post('/readers', async (req, res) => {
-  const { fullName, docType, docNumber, dateRegister, livro, quantidadeLivro, categoriaLivro, assunto, duracao } = req.body;
+  const { fullName, docType, docNumber, dateRegister, livro, quantidadeLivro, categoriaLivro, assunto, duracao, table } = req.body;
 
   try {
     const data = new readersModel({
@@ -54,7 +55,8 @@ router.post('/readers', async (req, res) => {
       quantidadeLivro,
       categoriaLivro,
       assunto,
-      duracao
+      duracao,
+      table
     });
     const response = await data.save();//Save data in DB
 
@@ -70,16 +72,16 @@ router.post('/readers', async (req, res) => {
     console.log(error);
   }
 })//Cadastrando
-router.post('/readers/delete/:id', async(req, res)=>{
+router.post('/readers/delete/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
     const response = await readersModel.deleteOne({
       _id: id
     });
-    if(response){
+    if (response) {
       res.redirect('/readers');
-    }else{
+    } else {
       console.log('Error')
     }
   } catch (error) {
@@ -87,29 +89,29 @@ router.post('/readers/delete/:id', async(req, res)=>{
   }
 
 })//Deletando 
-router.post('/readers/update/:id', async(req, res)=>{
+router.post('/readers/update/:id', async (req, res) => {
   const { id } = req.params;
   const { fullNameEdit } = req.body;
 
   try {
     const response = await readersModel.updateOne(
       {
-        _id:id
+        _id: id
       },
       {
-        $set:{
+        $set: {
           fullName: fullNameEdit
         }
       }
     )
-    if(response){
+    if (response) {
       res.send(`
         <script>
           alert('Editado com sucesso!');
           window.location.href="/readers";
         </script>  
       `)
-    }else{
+    } else {
 
     }
   } catch (error) {
@@ -117,11 +119,11 @@ router.post('/readers/update/:id', async(req, res)=>{
   }
 })//Actualizando
 
-router.get('/books', async(req, res) => {
+router.get('/books', async (req, res) => {
   const categoryBooks = await categoryBookModel.find();
   const pratiles = await pratilesModel.find();
   const books = await booksModel.find();
-  res.render('books', { title: "Livros", categoryBooks:categoryBooks, books:books, pratiles:pratiles });
+  res.render('books', { title: "Livros", categoryBooks: categoryBooks, books: books, pratiles: pratiles });
 })//Listando
 router.post('/books', async (req, res) => {
   const { book, categoryBook, numberBooks, editor, edition, author, provider, pratile } = req.body;
@@ -152,15 +154,15 @@ router.post('/books', async (req, res) => {
     console.log(error);
   }
 })//Cadastrando
-router.post('/books/delete/:id', async(req, res)=>{
+router.post('/books/delete/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const response = await booksModel.deleteOne({
       _id: id
     });
-    if(response){
+    if (response) {
       res.redirect('/books');
-    }else{
+    } else {
       console.log('Error')
     }
   } catch (error) {
@@ -168,16 +170,16 @@ router.post('/books/delete/:id', async(req, res)=>{
   }
 
 })//Deletando
-router.post('/books/update', async(req, res) => {
+router.post('/books/update', async (req, res) => {
   const { id, book, categoryBook, numberBooks, editor, edition, author, provider, pratile } = req.body;
 
   try {
     const response = await booksModel.updateOne(
       {
-        _id:id
+        _id: id
       },
       {
-        $set:{
+        $set: {
           book,
           categoryBook,
           numberBooks,
@@ -189,14 +191,14 @@ router.post('/books/update', async(req, res) => {
         }
       }
     )
-    if(response){
+    if (response) {
       res.send(`
         <script>
           alert('Editado com sucesso!');
           window.location.href="/books";
         </script>  
       `)
-    }else{
+    } else {
 
     }
   } catch (error) {
@@ -204,9 +206,9 @@ router.post('/books/update', async(req, res) => {
   }
 })//Actualizando
 
-router.get('/tables', async(req, res) => {
+router.get('/tables', async (req, res) => {
   const tables = await tablesModel.find();
-  res.render('table', { title: "Mesas", tables:tables });
+  res.render('table', { title: "Mesas", tables: tables });
 })//Listando
 router.post('/tables', async (req, res) => {
   const { table, people, chairs } = req.body;
@@ -232,45 +234,45 @@ router.post('/tables', async (req, res) => {
     console.log(error);
   }
 })//Cadastrando
-router.post('/table/delete/:id', async(req, res)=>{
+router.post('/table/delete/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const response = await tablesModel.deleteOne({
       _id: id
     });
-    if(response){
+    if (response) {
       res.redirect('/tables');
-    }else{
+    } else {
       console.log('Error')
     }
   } catch (error) {
     console.log(error);
   }
 })//Dletando
-router.post('/tables/update', async(req, res)=> {
+router.post('/tables/update', async (req, res) => {
   const { id, table, people, chairs } = req.body;
 
   try {
     const response = await tablesModel.updateOne(
       {
-        _id:id
+        _id: id
       },
       {
-        $set:{
+        $set: {
           table,
           people,
           chairs
         }
       }
     )
-    if(response){
+    if (response) {
       res.send(`
         <script>
           alert('Editado com sucesso!');
           window.location.href="/tables";
         </script>  
       `)
-    }else{
+    } else {
 
     }
   } catch (error) {
@@ -278,9 +280,9 @@ router.post('/tables/update', async(req, res)=> {
   }
 })//Actualizando
 
-router.get('/pratiles', async(req, res) => {
+router.get('/pratiles', async (req, res) => {
   const pratiles = await pratilesModel.find();
-  res.render('pratiles', { title: "Prateleiras", pratiles:pratiles })
+  res.render('pratiles', { title: "Prateleiras", pratiles: pratiles })
 })//Listando
 router.post('/pratiles', async (req, res) => {
   const { pratiles, capacityBooks } = req.body;
@@ -304,22 +306,22 @@ router.post('/pratiles', async (req, res) => {
     console.log(error);
   }
 })//Cadastrando
-router.post('/pratiles/delete/:id', async(req, res) => {
+router.post('/pratiles/delete/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const response = await pratilesModel.deleteOne({
       _id: id
     });
-    if(response){
+    if (response) {
       res.redirect('/pratiles');
-    }else{
+    } else {
       console.log('Error')
     }
   } catch (error) {
     console.log(error);
   }
 })//Deletando
-router.post('/pratiles/update', async(req, res)=>{
+router.post('/pratiles/update', async (req, res) => {
   const { id, pratiles, capacityBooks } = req.body;
 
   try {
@@ -328,13 +330,13 @@ router.post('/pratiles/update', async(req, res)=>{
         _id: id
       },
       {
-        $set:{
+        $set: {
           pratiles: pratiles,
           capacityBooks: capacityBooks
         }
       }
     )
-    if(response){
+    if (response) {
       res.send(
         `
           <script>
@@ -343,7 +345,7 @@ router.post('/pratiles/update', async(req, res)=>{
           </script>
         `
       )
-    }else{
+    } else {
 
     }
   } catch (error) {

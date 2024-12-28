@@ -52,7 +52,8 @@
                 quantidadeLivro:'<%= reader.quantidadeLivro %>',
                 categoriaLivro: '<%= reader.categoriaLivro %>',
                 assunto:'<%= reader.assunto %>',
-                duracao: '<%= reader.duracao %>'
+                duracao: '<%= reader.duracao %>',
+                table: '<%= reader.table %>'
               })">
               <i class="fa fa-eye" id="icon-table"></i></button>
     
@@ -138,7 +139,14 @@
         <label for="" class="label-form">Duração</label> <br>
         <select name="duracao" id=""  class="input">
           <% for(duration of durations ) {%>
-            <option value="30min"><%= duration.duration %></option>
+            <option value="<%= duration.duration %>"><%= duration.duration %></option>
+            <%}%>
+        </select> <br>
+
+        <label for="" class="label-form">Mesa</label> <br>
+        <select name="table" id=""  class="input">
+          <% for(table of tables ) {%>
+            <option value="<%= table.table %>"><%= table.table %></option>
             <%}%>
         </select> <br>
        
@@ -181,6 +189,9 @@
 
       <label for="#" class="label-form" id="label-modal-vis">Duração</label> <br>
       <label for="#" id="duration" class="label-infor-modal-vis"></label> <br>
+
+      <label for="#" class="label-form" id="label-modal-vis">Mesa</label> <br>
+      <label for="#" id="table" class="label-infor-modal-vis"></label> <br>
 
       <button type="button" style="float: right;" id="fecharModalVis" class="btn-close-modal-vis">Fechar</button>
 

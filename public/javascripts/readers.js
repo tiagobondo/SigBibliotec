@@ -22,6 +22,7 @@ const book = document.querySelector('#book');
 const quantybook = document.querySelector('#quantybook'); 
 const summary = document.querySelector('#summary'); 
 const duration = document.querySelector('#duration');
+const table = document.querySelector('#table');
 //Trazendo o modal de Visualização dos dados
 const modalVis = document.querySelector('#modalVis');
 //Trazendo o botão que vai fechar o modalVis quando for clicado
@@ -38,6 +39,7 @@ const visData = (data) => {
   quantybook.innerText = data.quantidadeLivro;
   summary.innerText = data.assunto;
   duration.innerText = data.duracao;
+  table.innerText = data.table;
 
   //Criando uma class dentro do modalVis
   modalVis.classList.add('openModalVis');
