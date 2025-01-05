@@ -885,6 +885,10 @@ body{
 
 /*Table*/
 
+.responsive-table{
+  overflow: auto;
+}
+
 .table{
   border: 1px solid var(--cor18);
   border-collapse: collapse;

@@ -19,44 +19,46 @@
    if( pratiles == '' ) {%>
       <h3 class="msg-inforation-user">Não existe nenhum item cadastrado!</h3>
     <%}  else{%>
-      <table class="table">
-        <thead>
+      <div class="responsive-table">
+        <table class="table">
+          <thead>
+            <tr>
+            <th class="th">Pratileira</th>
+            <th class="th">Capacidade</th>
+            <th class="th">Ações</th>
+            </tr>
+          </thead>
+        
+        <tbody>
+        <% for( pratile of pratiles ) {%>
           <tr>
-          <th class="th">Pratileira</th>
-          <th class="th">Capacidade</th>
-          <th class="th">Ações</th>
+            <td class="td"><%= pratile.pratiles %></td>
+            <td class="td"><%= pratile.capacityBooks %></td>
+            <td class="td" id="td-actions">
+              <button type="button" class="btn-table" id="btn-see" 
+              onclick="visData(data={
+                pratiles: '<%= pratile.pratiles %>',
+                capacityBooks: '<%= pratile.capacityBooks %>'
+              })">
+              <i class="fa fa-eye" id="icon-table"></i></button>
+    
+              <button type="button" class="btn-table" id="btn-edit"
+              onclick="editData(data={
+                id: '<%= pratile._id %>',
+                pratiles: '<%= pratile.pratiles %>',
+                capacityBooks: '<%= pratile.capacityBooks %>'
+              })"
+              >
+              <i class="fa fa-edit" id="icon-table"></i></button>
+    
+              <form action="/pratiles/delete/<%= pratile.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+            </td>
           </tr>
-        </thead>
-      
-      <tbody>
-      <% for( pratile of pratiles ) {%>
-        <tr>
-          <td class="td"><%= pratile.pratiles %></td>
-          <td class="td"><%= pratile.capacityBooks %></td>
-          <td class="td" id="td-actions">
-            <button type="button" class="btn-table" id="btn-see" 
-            onclick="visData(data={
-              pratiles: '<%= pratile.pratiles %>',
-              capacityBooks: '<%= pratile.capacityBooks %>'
-            })">
-            <i class="fa fa-eye" id="icon-table"></i></button>
-  
-            <button type="button" class="btn-table" id="btn-edit"
-            onclick="editData(data={
-              id: '<%= pratile._id %>',
-              pratiles: '<%= pratile.pratiles %>',
-              capacityBooks: '<%= pratile.capacityBooks %>'
-            })"
-            >
-            <i class="fa fa-edit" id="icon-table"></i></button>
-  
-            <form action="/pratiles/delete/<%= pratile.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
-          </td>
-        </tr>
-        <%}%>
-   
-      </tbody>
-      </table>
+          <%}%>
+     
+        </tbody>
+        </table>
+      </div>
       <%}%>
    
   </main>

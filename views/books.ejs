@@ -18,66 +18,68 @@
     <% if(books == '') {%>
       <h3 class="msg-inforation-user">Não existe nenhum item cadastrado!</h3>
       <%} else{%>
-        <table class="table">
-          <thead>
+        <div class="responsive-table">
+          <table class="table">
+            <thead>
+              <tr>
+              <th class="th">Livro</th>
+              <th class="th">Categoria</th>
+              <th class="th">Nºs no Stock</th>
+              <th class="th">Editora</th>
+              <th class="th">Edição</th>
+              <th class="th">Autor</th>
+              <th class="th">Fornecidor</th>
+              <th class="th">Ações</th>
+              </tr>
+            </thead>
+          
+          <tbody>
+          <% for( book of books ) {%>
             <tr>
-            <th class="th">Livro</th>
-            <th class="th">Categoria</th>
-            <th class="th">Nºs no Stock</th>
-            <th class="th">Editora</th>
-            <th class="th">Edição</th>
-            <th class="th">Autor</th>
-            <th class="th">Fornecidor</th>
-            <th class="th">Ações</th>
+              <td class="td"><%= book.book %></td>
+              <td class="td"><%= book.categoryBook %></td>
+              <td class="td"><%= book.numberBooks %></td>
+              <td class="td"><%= book.editor %></td>
+              <td class="td"><%= book.edition %></td>
+              <td class="td"><%= book.author %></td>
+              <td class="td"><%= book.provider %></td>
+              <td class="td" id="td-actions">
+                <button type="button" class="btn-table" id="btn-see" 
+                onclick="visData(data={
+                  book: '<%= book.book %>',
+                  categoryBook: '<%= book.categoryBook %>',
+                  numberBooks:'<%= book.numberBooks %>',
+                  editor:'<%= book.editor %>',
+                  edition:'<%= book.edition %>',
+                  author:'<%= book.author %>',
+                  provider: '<%= book.provider %>',
+                  pratile: '<%= book.pratile %>'
+                })">
+                <i class="fa fa-eye" id="icon-table"></i></button>
+      
+                <button type="button" class="btn-table" id="btn-edit"
+                onclick="editData(data={
+                  id: '<%= book._id %>',
+                  book: '<%= book.book %>',
+                  categoryBook: '<%= book.categoryBook %>',
+                  numberBooks:'<%= book.numberBooks %>',
+                  editor:'<%= book.editor %>',
+                  edition:'<%= book.edition %>',
+                  author:'<%= book.author %>',
+                  provider: '<%= book.provider %>',
+                  pratile: '<%= book.pratile %>'
+                })"
+                >
+                <i class="fa fa-edit" id="icon-table"></i></button>
+      
+                <form action="/books/delete/<%= book.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
+              </td>
             </tr>
-          </thead>
-        
-        <tbody>
-        <% for( book of books ) {%>
-          <tr>
-            <td class="td"><%= book.book %></td>
-            <td class="td"><%= book.categoryBook %></td>
-            <td class="td"><%= book.numberBooks %></td>
-            <td class="td"><%= book.editor %></td>
-            <td class="td"><%= book.edition %></td>
-            <td class="td"><%= book.author %></td>
-            <td class="td"><%= book.provider %></td>
-            <td class="td" id="td-actions">
-              <button type="button" class="btn-table" id="btn-see" 
-              onclick="visData(data={
-                book: '<%= book.book %>',
-                categoryBook: '<%= book.categoryBook %>',
-                numberBooks:'<%= book.numberBooks %>',
-                editor:'<%= book.editor %>',
-                edition:'<%= book.edition %>',
-                author:'<%= book.author %>',
-                provider: '<%= book.provider %>',
-                pratile: '<%= book.pratile %>'
-              })">
-              <i class="fa fa-eye" id="icon-table"></i></button>
-    
-              <button type="button" class="btn-table" id="btn-edit"
-              onclick="editData(data={
-                id: '<%= book._id %>',
-                book: '<%= book.book %>',
-                categoryBook: '<%= book.categoryBook %>',
-                numberBooks:'<%= book.numberBooks %>',
-                editor:'<%= book.editor %>',
-                edition:'<%= book.edition %>',
-                author:'<%= book.author %>',
-                provider: '<%= book.provider %>',
-                pratile: '<%= book.pratile %>'
-              })"
-              >
-              <i class="fa fa-edit" id="icon-table"></i></button>
-    
-              <form action="/books/delete/<%= book.id %>" method="post"><button type="submit" class="btn-table" id="btn-delete" onclick="return(confirm('Tens a certeza que queres eliminar?'))"><i class="fa fa-remove" id="icon-table"></i></button></form>
-            </td>
-          </tr>
-          <%}%>
-     
-        </tbody>
-        </table>
+            <%}%>
+       
+          </tbody>
+          </table>
+        </div>
         <%}%>
     
     <div class="tfooter">
