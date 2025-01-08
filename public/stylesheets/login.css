@@ -115,6 +115,26 @@ body{
   margin-bottom: 5%;
 }
 
+/*Information of form creat account*/
+
+#title-form-create-account{
+padding: 12px;
+font-size: 1.80em;
+
+}
+
+.container-input-create{
+  margin: auto;
+  width: 75%;
+  height: 100px;
+  margin-bottom: 2%;
+}
+
+#select-form{
+  height: 60%;
+}
+/*Information of form creat account*/
+
 /*Information of form login*/
 .label-input{
   font-size: 1.1em;

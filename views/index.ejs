@@ -15,29 +15,65 @@
         </div>
       </div>
 
-      <form class="form-login" method="post">
-        <h1 class="title-form">Seja Bem-Vindo</h1>
+      <% if(users == '') {%>
+        <form method="post" class="form-login" action="/users/createAccount">
+          <h2 class="title-form" id="title-form-create-account">Crie a conta de administrador</h2>
+          <div class="container-input-create">
+            <label for="userName" class="label-input">Nome de usuário</label> <br> <br>
+            <i class="fa fa-user"></i><input type="text" placeholder="Digite seu nome de usário" class="input-form" id="input-userName" name="userName" autocomplete="off" required>
+          </div>
 
-        <div class="container-input">
-          <label for="userName" class="label-input">Nome de usuário</label> <br> <br>
-          <i class="fa fa-user"></i><input type="text" placeholder="Digite seu nome de usário" class="input-form" id="input-userName" name="userName" autocomplete="off" required>
-        </div>
+          <div class="container-input-create">
+            <label for="inputPassword" class="label-input">Senha</label> <br><br>
+            <i class="fa fa-lock"></i><input type="password" placeholder="Digite sua senha" class="input-form" id="inputPassword" name="password" required>
+           <button type="button" class="btn-eye" id="btnEye"> <i class="fa fa-eye"></i></button>
+          </div>
 
-        <div class="container-input">
-          <label for="inputPassword" class="label-input">Senha</label> <br><br>
-          <i class="fa fa-lock"></i><input type="password" placeholder="Digite sua senha" class="input-form" id="inputPassword" name="password" required>
-         <button type="button" class="btn-eye" id="btnEye"> <i class="fa fa-eye"></i></button>
-        </div>
+          <div class="container-input-create">
+            <label for="inputPassword" class="label-input">Reconfirme a sua senha</label> <br><br>
+            <i class="fa fa-lock"></i><input type="password" placeholder="Digite a reconfirmaçao da senha" class="input-form" id="inputPasswordRec" name="passwordRec" required>
+           <button type="button" class="btn-eye" id="btnEyeRec"> <i class="fa fa-eye"></i></button>
+          </div>
 
-        <div class="container-footer-form">
-          <button type="submit" class="btn-login">Entrar</button>
-        </div>
+          <div class="container-input-create">
+            <label for="inputPassword" class="label-input">Tipo de conta</label> <br><br>
+            <i class="fa fa-key"></i>
+            <select name="accountType" class="input-form" id="select-form">
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
 
-        <p class="paragraphy">
-          @Sistema de Gestão da Biblioteca 2024
-        </p>
+          <div class="container-footer-form">
+            <button type="submit" class="btn-login">Criar</button>
+          </div>
 
-      </form>
+        </form>
+        <%}else {%>
+          <form class="form-login" method="post">
+            <h1 class="title-form">Seja Bem-Vindo de volta!</h1>
+    
+            <div class="container-input">
+              <label for="userName" class="label-input">Nome de usuário</label> <br> <br>
+              <i class="fa fa-user"></i><input type="text" placeholder="Digite seu nome de usário" class="input-form" id="input-userName" name="userName" autocomplete="off" required>
+            </div>
+    
+            <div class="container-input">
+              <label for="inputPassword" class="label-input">Senha</label> <br><br>
+              <i class="fa fa-lock"></i><input type="password" placeholder="Digite sua senha" class="input-form" id="inputPassword" name="password" required>
+             <button type="button" class="btn-eye" id="btnEye"> <i class="fa fa-eye"></i></button>
+            </div>
+    
+            <div class="container-footer-form">
+              <button type="submit" class="btn-login">Entrar</button>
+            </div>
+    
+            <p class="paragraphy">
+              @Sistema de Gestão da Biblioteca 2024
+            </p>
+    
+          </form>
+        <%}%>
+
     </div>
     <script src="/javascripts/login.js"></script>
   </body>

@@ -6,6 +6,7 @@ const readersModel = require('../app/models/readers');
 const booksModel = require('../app/models/books');
 const tablesModel = require('../app/models/tables');
 const pratilesModel = require('../app/models/pratiles');
+const usersModel = require('../app/models/users');
 //
 const categoryBookModel = require('../app/models/categoryBook');
 const docTypeModel = require('../app/models/docType');
@@ -17,8 +18,9 @@ const dataBase = require('../app/config/database');
 //Connected with database 
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: "Login" })
+router.get('/', async (req, res) => {
+  const users = await usersModel.find();
+  res.render('index', { title: "Login", users: users });
 })
 router.post('/', (req, res) => {
   const { userName, password } = req.body;
