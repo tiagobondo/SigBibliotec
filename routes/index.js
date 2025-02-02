@@ -1,4 +1,6 @@
 var express = require('express');
+const bcrypt = require('bcrypt')
+
 var router = express.Router();
 
 //import models
@@ -20,10 +22,9 @@ const dataBase = require('../app/config/database');
 /* GET home page. */
 router.get('/', async (req, res) => {
   const users = await usersModel.find();
-  res.render('index', { title: "Login", users: users });
+  res.render('index', { title1: "Login", title2: "Criar conta", users: users });
 })
 router.post('/', (req, res) => {
-  const { userName, password } = req.body;
 })
 
 router.get('/dashboard', async (req, res) => {
@@ -373,7 +374,9 @@ router.get('/about', (req, res) => {
 })
 
 router.post('/logout', (req, res) => {
-  res.redirect('/');
+  res
+    .clearCookie('token')
+    .redirect('/')
 })
 
 module.exports = router;

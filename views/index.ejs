@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>
+      <% if(users == '' ) {%> 
+        <%= title2 %>
+        <%} else {%>
+          <%= title1 %>
+        <%}%>
+    </title>
     <link rel='stylesheet' href='/stylesheets/login.css'/>
     <link rel='stylesheet' href="/stylesheets/icones/css/all.css">
     <!---Chamar aqui as configurações para responsividade-->
@@ -39,7 +45,7 @@
             <label for="inputPassword" class="label-input">Tipo de conta</label> <br><br>
             <i class="fa fa-key"></i>
             <select name="accountType" class="input-form" id="select-form">
-              <option value="admin">Administrador</option>
+              <option value="administrador">Administrador</option>
             </select>
           </div>
 
@@ -49,7 +55,7 @@
 
         </form>
         <%}else {%>
-          <form class="form-login" method="post">
+          <form class="form-login" method="post" action="/users/login">
             <h1 class="title-form">Seja Bem-Vindo de volta!</h1>
     
             <div class="container-input">

@@ -14,6 +14,11 @@ const schemaUser = mongoose.Schema({
     required: true
   },
 
+  passwordRec:{
+    type: String,
+    required: true
+  },
+
   accountType: {
     type: String,
     required: true
